@@ -22,11 +22,15 @@ export const Register = (props) => {
 
         if (password.current.value === verifyPassword.current.value) {
             const newUser = {
-                "username": email.current.value,
+                "username": handle.current.value,
                 "first_name": firstName.current.value,
                 "last_name": lastName.current.value,
                 "email": email.current.value,
-                "password": password.current.value
+                "password": password.current.value,
+                "handle": handle.current.value,
+                "goofy": true,
+                "fav_skater": fav_skater.current.value,
+                "fav_video": fav_video.current.value
             }
 
             return fetch("http://127.0.0.1:8000/register", {
