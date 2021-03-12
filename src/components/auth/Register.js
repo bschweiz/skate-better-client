@@ -6,7 +6,6 @@ export const Register = (props) => {
     const firstName = React.createRef()
     const lastName = React.createRef()
     const email = React.createRef()
-    const bio = React.createRef()
     const password = React.createRef()
     const verifyPassword = React.createRef()
     const passwordDialog = React.createRef()
@@ -19,7 +18,6 @@ export const Register = (props) => {
                 "username": email.current.value,
                 "first_name": firstName.current.value,
                 "last_name": lastName.current.value,
-                "bio": bio.current.value,
                 "email": email.current.value,
                 "password": password.current.value
             }
