@@ -3,25 +3,34 @@ import { Link } from "react-router-dom"
 import "./Auth.css"
 
 export const Register = (props) => {
+    // this block for the Django User Table
     const firstName = React.createRef()
     const lastName = React.createRef()
     const email = React.createRef()
-    const bio = React.createRef()
     const password = React.createRef()
     const verifyPassword = React.createRef()
     const passwordDialog = React.createRef()
+    // this block for Skater Table
+    const handle = React.createRef()
+    const goofy = React.createRef()
+    const fav_skater = React.createRef()
+    const fav_video = React.createRef()
+
 
     const handleRegister = (e) => {
         e.preventDefault()
 
         if (password.current.value === verifyPassword.current.value) {
             const newUser = {
-                "username": email.current.value,
+                "username": handle.current.value,
                 "first_name": firstName.current.value,
                 "last_name": lastName.current.value,
-                "bio": bio.current.value,
                 "email": email.current.value,
-                "password": password.current.value
+                "password": password.current.value,
+                "handle": handle.current.value,
+                "goofy": true,
+                "fav_skater": fav_skater.current.value,
+                "fav_video": fav_video.current.value
             }
 
             return fetch("http://127.0.0.1:8000/register", {
@@ -61,6 +70,22 @@ export const Register = (props) => {
                 <fieldset>
                     <label htmlFor="lastName"> Last Name </label>
                     <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="Last name" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="handle"> Nickname/Handle </label>
+                    <input ref={handle} type="text" name="handle" className="form-control" placeholder="Handle" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="goofy"> Goofy/Regular? </label>
+                    <input ref={goofy} type="boolean" name="handle" className="form-control" placeholder="Goofy?" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="favSkater"> Favorite Skater </label>
+                    <input ref={fav_skater} type="text" name="handle" className="form-control" placeholder="Favorite Skater" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="favVideo"> Favorite Skate Video or Part </label>
+                    <input ref={fav_video} type="text" name="handle" className="form-control" placeholder="Favorite Video" required />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="inputEmail"> Email address </label>
