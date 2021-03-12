@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom'
 import { SKATEBetter } from './components/SKATEBetter.js';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <SKATEBetter />
+    <Router>
+      <SKATEBetter />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
