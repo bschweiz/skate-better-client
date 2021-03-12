@@ -72,11 +72,9 @@ export const Register = (props) => {
                     <input ref={handle} type="text" name="handle" className="form-control" placeholder="Handle" required />
                 </fieldset>
                 <fieldset>
-                <fieldset>
                     <label htmlFor="goofy"> Goofy/Regular? </label>
                     <input ref={goofy} type="boolean" name="handle" className="form-control" placeholder="Goofy?" required />
                 </fieldset>
-                <fieldset>
                 <fieldset>
                     <label htmlFor="favSkater"> Favorite Skater </label>
                     <input ref={fav_skater} type="text" name="handle" className="form-control" placeholder="Favorite Skater" required />
