@@ -6,13 +6,21 @@ import { HomeViewContext } from "./HomeViewProvider"
 export const HomeView = (props) => {
     const history = useHistory()
 
-return (
+    const { profile, getProfile } = useContext(HomeViewContext)
     
+    useEffect(() => {
+        getProfile()
+    }, [])
+
+return (
+    <>
+
     <main style={{
             margin: "5rem 2rem",
             lineHeight: "1.75rem"
         }}>
             <h1>Welcome Back Champ!</h1>
+            <h3>{profile.skater.handle}</h3>
             <button>Play New Game</button>
             <button>Review Old Games</button>
             <button className="nav-link fakeLink"
@@ -22,5 +30,6 @@ return (
                             }}
                         >Logout</button>
         </main>
+    </>
         )    
 }
