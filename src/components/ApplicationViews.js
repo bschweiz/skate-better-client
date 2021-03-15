@@ -2,7 +2,7 @@
 import React from "react"
 import { Route } from "react-router-dom"
 
-import { HomeView } from "./nav/HomeView"
+import { HomeView, HomeViewProvider } from "./nav/HomeView"
 
 
 export const ApplicationViews = (props) => {
