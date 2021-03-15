@@ -17,10 +17,10 @@ export const HomeViewProvider = (props) => {
     }
 
     return (
-        <HomeView.Provider value={{
+        <HomeViewContext.Provider value={{
             profile, getProfile
         }}>
             {props.children}
-        </HomeView.Provider>
+        </HomeViewContext.Provider>
     )
 }

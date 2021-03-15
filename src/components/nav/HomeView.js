@@ -1,10 +1,12 @@
   
 import React, { useContext, useEffect, useState } from 'react'
-import { HomeViewContext } from "./HomeViewProvider";
+import { useHistory } from 'react-router'
+import { HomeViewContext } from "./HomeViewProvider"
 
 export const HomeView = (props) => {
+    const history = useHistory()
 
-
+return (
     
     <main style={{
             margin: "5rem 2rem",
@@ -16,8 +18,9 @@ export const HomeView = (props) => {
             <button className="nav-link fakeLink"
                             onClick={() => {
                                 localStorage.removeItem("sb_token")
-                                props.history.push({ pathname: "/" })
+                                history.push({ pathname: "/" })
                             }}
                         >Logout</button>
         </main>
+        )    
 }
