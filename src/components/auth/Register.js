@@ -28,7 +28,7 @@ export const Register = (props) => {
                 "email": email.current.value,
                 "password": password.current.value,
                 "handle": handle.current.value,
-                "goofy": true,
+                "goofy": false,
                 "fav_skater": fav_skater.current.value,
                 "fav_video": fav_video.current.value
             }
