@@ -10,7 +10,6 @@ export const SKATEBetter = () => (
         <Route render={() => {
             if (localStorage.getItem("sb_token")) {
                 return <>
-                    <Route render={NavBar} />
                     <Route render={props => <ApplicationViews {...props} />} />
                 </>
             } else {
