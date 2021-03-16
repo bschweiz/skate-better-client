@@ -1,7 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react'
+import { useHistory } from 'react-router'
 import { OpponentContext } from "./OpponentProvider"
 
 export const OpponentSelect = (props) => {
+    const history = useHistory()
 
     const { allOpponents, addOpponent, getAllOpponents } = useContext(OpponentContext)
 
@@ -40,7 +42,14 @@ export const OpponentSelect = (props) => {
                     </select>
                 </div>
             </fieldset>
-
+            <button type="submit"
+                onClick={evt => {
+                    evt.preventDefault()
+                    history.push({pathname: "/game" })
+                }}
+                className="btn btn-primary">
+                START SKATING!
+            </button>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="maker">Name or Nickname: </label>
@@ -64,8 +73,8 @@ export const OpponentSelect = (props) => {
 
                 }}
                 className="btn btn-primary">
-                Save details, start SKATING
-        </button>
+                Save new Opponet, start SKATING
+            </button>
             <button type="submit"
                 onClick={evt => {
                     evt.preventDefault()
