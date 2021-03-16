@@ -4,11 +4,11 @@ export const OpponentContext = React.createContext()
 
 export const OpponentProvider = (props) => {
 
-    const [oppoonent, setOpponent] = useState([])
-    const [allOppoonents, setAllOpponents] = useState([])
+    const [opponent, setOpponent] = useState([])
+    const [allOpponents, setAllOpponents] = useState([])
 
     const getAllOpponents = () => {
-        return fetch("http://localhost:8000/oppoonent", {
+        return fetch("http://localhost:8000/opponent", {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("sb_token")}`
             }
@@ -18,7 +18,7 @@ export const OpponentProvider = (props) => {
     }
 
     const getOpponent = (id) => {
-        return fetch(`http://localhost:8000/oppoonent/${id}`, {
+        return fetch(`http://localhost:8000/opponent/${id}`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("sb_token")}`
             }
@@ -27,7 +27,7 @@ export const OpponentProvider = (props) => {
     }
 
     const createOpponent = (game) => {
-        return fetch("http://localhost:8000/oppoonent", {
+        return fetch("http://localhost:8000/opponent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -40,7 +40,7 @@ export const OpponentProvider = (props) => {
     }
 
     const editOpponent = (opponent) => {
-        return fetch(`http://localhost:8000/oppoonent/${opponent.id}`, {
+        return fetch(`http://localhost:8000/opponent/${opponent.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -53,7 +53,7 @@ export const OpponentProvider = (props) => {
 
     return (
         <OpponentContext.Provider value={{
-            oppoonent, allOppoonents,
+            opponent, allOpponents,
             getOpponent, setOpponent, setAllOpponents,
             createOpponent, editOpponent, getAllOpponents
         }}>
