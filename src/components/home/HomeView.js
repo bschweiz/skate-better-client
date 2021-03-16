@@ -47,7 +47,6 @@ export const HomeView = (props) => {
 
                 <button className="nav-link"
                     onClick={() => {
-                        localStorage.removeItem("sb_token")
                         history.push({ pathname: "/play " })
                     }}>Play New Game</button>
 

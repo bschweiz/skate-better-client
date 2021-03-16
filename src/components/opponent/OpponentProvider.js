@@ -46,7 +46,7 @@ export const OpponentProvider = (props) => {
                 "Content-Type": "application/json",
                 "Authorization": `Token ${localStorage.getItem("sb_token")}`
             },
-            body: JSON.stringify(game)
+            body: JSON.stringify(opponent)
         })
             .then(getOpponent)
     }
