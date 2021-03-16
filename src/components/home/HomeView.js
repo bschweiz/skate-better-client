@@ -1,10 +1,11 @@
 
-import { render } from '@testing-library/react'
+
 import React, { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import { HomeViewContext } from "./HomeViewProvider"
 
 export const HomeView = (props) => {
+    
     const history = useHistory()
     const [games, setGames] = useState([])
     const { profile, getProfile } = useContext(HomeViewContext)
@@ -12,10 +13,10 @@ export const HomeView = (props) => {
     useEffect(() => {
         getProfile()
     }, [])
-
+    
     useEffect(() => {
         const games = profile.games
-        // console.log(profile)
+        console.log(profile)
         setGames(games)
     }, [profile])
 
@@ -30,7 +31,7 @@ export const HomeView = (props) => {
                 <h1>Welcome Back Champ!</h1>
                 <h3>{profile.handle}</h3>
                 <h3>Your past games</h3>
-                { 
+                {/* {
                     games.map(game => {
                         return <p>
 
@@ -42,16 +43,20 @@ export const HomeView = (props) => {
                     }
 
                     )
-                }
+                } */}
 
-                <button>Play New Game</button>
+                <button className="nav-link"
+                    onClick={() => {
+                        props.history.push({ pathname: "/play" })
+                    }}>Play New Game</button>
+
                 <button>Review Old Games</button>
-                <button className="nav-link fakeLink"
+
+                <button className="nav-link"
                     onClick={() => {
                         localStorage.removeItem("sb_token")
                         history.push({ pathname: "/" })
-                    }}
-                >Logout</button>
+                    }}>Logout</button>
             </main>
         </>
     )
