@@ -1,4 +1,4 @@
-  
+
 import { render } from '@testing-library/react'
 import React, { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
@@ -6,39 +6,55 @@ import { HomeViewContext } from "./HomeViewProvider"
 
 export const HomeView = (props) => {
     const history = useHistory()
-
+    const [games, setGames] = useState([])
     const { profile, getProfile } = useContext(HomeViewContext)
-    
+
     useEffect(() => {
         getProfile()
     }, [])
-    
-    useEffect(() => {
-        console.log(profile)
-    }, [profile])
-    
 
-    return ( 
+    useEffect(() => {
+        const games = profile.games
+        // console.log(profile)
+        setGames(games)
+    }, [profile])
+
+
+    return (
         <>
-    
-        <main style={{
+
+            <main style={{
                 margin: "5rem 2rem",
                 lineHeight: "1.75rem"
             }}>
                 <h1>Welcome Back Champ!</h1>
                 <h3>{profile.handle}</h3>
-                
+                <h3>Your past games</h3>
+                { 
+                    games.map(game => {
+                        return <p>
+
+                            <div className="game__title">Vs opponent id: {game.opponent} at {game.location}</div>
+                            <div className="game__players"> on {game.date_time} players needed</div>
+                            <div className="game__description">Who won? {game.won ? "YOU!" : "Not you, unfortunately."}</div>
+
+                        </p>
+                    }
+
+                    )
+                }
+
                 <button>Play New Game</button>
                 <button>Review Old Games</button>
                 <button className="nav-link fakeLink"
-                                onClick={() => {
-                                    localStorage.removeItem("sb_token")
-                                    history.push({ pathname: "/" })
-                                }}
-                            >Logout</button>
+                    onClick={() => {
+                        localStorage.removeItem("sb_token")
+                        history.push({ pathname: "/" })
+                    }}
+                >Logout</button>
             </main>
         </>
-            )    
-    
+    )
+
 
 }
