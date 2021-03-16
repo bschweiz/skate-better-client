@@ -1,28 +1,26 @@
 import React, { useRef, useState } from 'react'
 
-export const UserContext = React.createContext()
+export const HomeViewContext = React.createContext()
 
-export const UserProvider = (props) => {
-    const activeUserId = parseInt(localStorage.getItem("app_user_id"))
-    const [users, setUsers] = useState([])
-    const [activeUser, setActiveUser] = useState([])
-    const getSkater = () => {
-        return fetch('http://localhost:8000/profile')
-            .then(res => res.json())
-            .then(setUsers)
-    }
+export const HomeViewProvider = (props) => {
+    
+    const [profile, setProfile] = useState([])
 
-    const getActiveUser = () => {
-        return fetch(`http://localhost:8088/users/${activeUserId}`)
-            .then(res => res.json())
-            .then(setActiveUser)
+    const getProfile = () => {
+        return fetch("http://localhost:8000/profile", {
+            headers:{
+                "Authorization": `Token ${localStorage.getItem("sb_token")}`
+            }
+        })
+            .then(response => response.json())
+            .then(setProfile)
     }
 
     return (
-        <UserContext.Provider value={{
-            users, activeUser, getUsers, getActiveUser
+        <HomeViewContext.Provider value={{
+            profile, getProfile
         }}>
             {props.children}
-        </UserContext.Provider>
+        </HomeViewContext.Provider>
     )
 }
