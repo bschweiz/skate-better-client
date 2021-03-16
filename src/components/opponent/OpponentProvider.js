@@ -5,15 +5,16 @@ export const OpponentContext = React.createContext()
 export const OpponentProvider = (props) => {
 
     const [oppoonent, setOpponent] = useState([])
+    const [allOppoonents, setAllOpponents] = useState([])
 
-    const getOpponent = () => {
+    const getAllOpponents = () => {
         return fetch("http://localhost:8000/oppoonent", {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("sb_token")}`
             }
         })
             .then(response => response.json())
-            .then(setOpponent)
+            .then(setAllOpponents)
     }
 
     const getOpponent = (id) => {
@@ -62,9 +63,9 @@ export const OpponentProvider = (props) => {
 
     return (
         <OpponentContext.Provider value={{
-            game, oppoonent, gameTypes,
-            getOpponent, getOpponent, getOpponentTypes,
-            createOpponent, editOpponent, getOpponent
+            game, oppoonent, allOppoonents,
+            getOpponent, setOpponent, setAllOpponents,
+            createOpponent, editOpponent, getAllOpponents
         }}>
             {props.children}
         </OpponentContext.Provider>
