@@ -26,7 +26,8 @@ export const HomeView = (props) => {
                 lineHeight: "1.75rem"
             }}>
                 <h1>Welcome Back Champ!</h1>
-                <h3>{profile ? "" : profile.skater.handle}</h3>
+                <h3>{profile.handle}</h3>
+                
                 <button>Play New Game</button>
                 <button>Review Old Games</button>
                 <button className="nav-link fakeLink"
