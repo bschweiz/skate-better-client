@@ -26,16 +26,6 @@ export const OpponentProvider = (props) => {
             .then(response => response.json())
     }
 
-    const getOpponentTypes = () => {
-        return fetch("http://localhost:8000/gametypes", {
-            headers: {
-                "Authorization": `Token ${localStorage.getItem("sb_token")}`
-            }
-        })
-            .then(response => response.json())
-            .then(setTypes)
-    }
-
     const createOpponent = (game) => {
         return fetch("http://localhost:8000/oppoonent", {
             method: "POST",
@@ -49,8 +39,8 @@ export const OpponentProvider = (props) => {
             .then(getOpponent)
     }
 
-    const editOpponent = (game) => {
-        return fetch(`http://localhost:8000/oppoonent/${game.id}`, {
+    const editOpponent = (opponent) => {
+        return fetch(`http://localhost:8000/oppoonent/${opponent.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -63,7 +53,7 @@ export const OpponentProvider = (props) => {
 
     return (
         <OpponentContext.Provider value={{
-            game, oppoonent, allOppoonents,
+            oppoonent, allOppoonents,
             getOpponent, setOpponent, setAllOpponents,
             createOpponent, editOpponent, getAllOpponents
         }}>
