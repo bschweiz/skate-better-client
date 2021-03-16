@@ -3,12 +3,19 @@ import { OpponentContext } from "./OpponentProvider"
 
 export const OpponentSelect = (props) => {
 
+    const { addOpponent, getAllOpponents } = useContext(OpponentContext)
+
+    useEffect(() => {
+        getAllOpponents()
+    }, [])
+
+
+
     const chosenOpponent = useRef(null)
     const newOpponentName = useRef(null)
-    const newOpponentStance = useRef(null)
+    let goofy = false
     
-    console.log("opponent select read")
-
+    const constructNewOpponent
     return (
         <form className="opponentSelect">
             <h2 className="opponentSelect__title">Previous Opponents:</h2>
@@ -21,7 +28,7 @@ export const OpponentSelect = (props) => {
             </fieldset>
 
             <fieldset>
-                <input type="text" ref={newOpponentStance} required autoFocus placeholder="stance" />
+                <input type="text" ref={goofy} required autoFocus placeholder="stance" />
             </fieldset>
 
             <button type="submit"
