@@ -1,27 +1,40 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useEffect } from 'react'
 import { OpponentContext } from "./OpponentProvider"
 
 export const OpponentSelect = (props) => {
 
-    const chosenOpponent = useRef(null)
-    const newOpponentName = useRef(null)
-    const newOpponentStance = useRef(null)
-    
-    console.log("opponent select read")
+    const { allOpponents, addOpponent, getAllOpponents } = useContext(OpponentContext)
+
+    useEffect(() => {
+        getAllOpponents()
+    }, [])
+
+  
+
+
+ 
 
     return (
         <form className="opponentSelect">
-            <h2 className="opponentSelect__title">Previous Opponents:</h2>
             <fieldset>
-                <input type="text" ref={chosenOpponent} required autoFocus placeholder="old homies" />
+                <div className="form-group">
+
+                    <select className="form-control" autoFocus 
+                    >
+                        <option value='0'>Previous Opponents</option>
+                        {allOpponents.map((o) => (
+                            <option key={o.id} value={o.id}>{o.handle}</option> 
+                        ))}
+                    </select>
+                </div>
             </fieldset>
 
             <fieldset>
-                <input type="text" ref={newOpponentName} required autoFocus placeholder="enter name" />
+                <input type="text" required autoFocus placeholder="enter name" />
             </fieldset>
 
             <fieldset>
-                <input type="text" ref={newOpponentStance} required autoFocus placeholder="stance" />
+                <input type="text" required autoFocus placeholder="stance" />
             </fieldset>
 
             <button type="submit"
