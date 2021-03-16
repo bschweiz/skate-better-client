@@ -3,14 +3,13 @@ import React, { useState } from "react"
 export const OpponentContext = React.createContext()
 
 export const OpponentProvider = (props) => {
+
     const [oppoonent, setOpponent] = useState([])
-    const [game, setOpponent] = useState([])
-    const [gameTypes, setTypes] = useState([])
 
     const getOpponent = () => {
         return fetch("http://localhost:8000/oppoonent", {
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+                "Authorization": `Token ${localStorage.getItem("sb_token")}`
             }
         })
             .then(response => response.json())
@@ -20,7 +19,7 @@ export const OpponentProvider = (props) => {
     const getOpponent = (id) => {
         return fetch(`http://localhost:8000/oppoonent/${id}`, {
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+                "Authorization": `Token ${localStorage.getItem("sb_token")}`
             }
         })
             .then(response => response.json())
@@ -29,7 +28,7 @@ export const OpponentProvider = (props) => {
     const getOpponentTypes = () => {
         return fetch("http://localhost:8000/gametypes", {
             headers: {
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+                "Authorization": `Token ${localStorage.getItem("sb_token")}`
             }
         })
             .then(response => response.json())
@@ -41,7 +40,7 @@ export const OpponentProvider = (props) => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+                "Authorization": `Token ${localStorage.getItem("sb_token")}`
             },
             body: JSON.stringify(game)
         })
@@ -54,7 +53,7 @@ export const OpponentProvider = (props) => {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Token ${localStorage.getItem("lu_token")}`
+                "Authorization": `Token ${localStorage.getItem("sb_token")}`
             },
             body: JSON.stringify(game)
         })
