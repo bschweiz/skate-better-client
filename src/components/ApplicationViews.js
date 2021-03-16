@@ -13,11 +13,13 @@ export const ApplicationViews = (props) => {
         <>
             <HomeViewProvider>
                 <OpponentProvider>
-                    <Route exact path='/'>
-                        <HomeView />
+                    <Route exact path='/' render={
+                        props => <HomeView {...props} />
+                    }>
                     </Route>
-                    <Route exact path='/play'>
-                        <OpponentSelect />
+                    <Route exact path='/play' render={
+                        props => <OpponentSelect {...props} />
+                    }>
                     </Route>
                 </OpponentProvider>
             </HomeViewProvider>

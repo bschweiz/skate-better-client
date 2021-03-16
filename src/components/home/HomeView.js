@@ -47,7 +47,7 @@ export const HomeView = (props) => {
 
                 <button className="nav-link"
                     onClick={() => {
-                        history.push({ pathname: "/play " })
+                        props.history.push({ pathname: "/play" })
                     }}>Play New Game</button>
 
                 <button>Review Old Games</button>
