@@ -27,13 +27,13 @@ export const TrickCard = ({ trick, props }) => {
         return (
             <section className="trick_info">
         
-                    <input type="checkbox" key={trick.id} id={trick.id} name="checkbox" checked=
+                    <input type="checkbox" key="skater-{trick.id}" id={trick.id} name="checkbox" checked=
                     {trick.stance ? "checked": ""}
                     onChange={evt=>{
                         console.log(evt)
                     }} />
                     <label htmlFor={trick.id}>{trick.name}</label>
-                    <input type="checkbox" key={trick.id} id={trick.id} name="checkbox" checked=
+                    <input type="checkbox" key="opponent-{trick.id}" id={trick.id} name="checkbox" checked=
                     {trick.stance ? "checked": ""}
                     onChange={evt=>{
                         console.log(evt)
