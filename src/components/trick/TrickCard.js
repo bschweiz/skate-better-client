@@ -1,18 +1,16 @@
 import React, { useContext, useEffect } from "react"
 import { Link } from "react-router-dom"
-import { EventContext } from "./EventProvider"
-import { PlantContext } from "../plant/PlantProvider"
-import "./EventCard.css"
+import { TrickContext } from "./EventProvider"
+import "./TrickCard.css"
 
 
 
 export const EventCard = ({ event, props }) => {
 
-    const { plants, getPlants } = useContext(PlantContext)
-    const { getEvents, updateCompleted } = useContext(EventContext)
+    const { tricks, getTricks } = useContext(TrickContext)
     // debugger
     useEffect(() => {
-        getEvents().then(getPlants)
+        getTricks()
     }, [])
 
     const matchingPlant = plants.find(p => p.id === event.plantId)

@@ -8,7 +8,7 @@ export const GamePlay = (props) => {
     const [ availableTricks, setAvailableTricks ] = useState([])
     
     useEffect(() => {
-        getTrickss()
+        getTricks()
     }, [])
     
     useEffect (()=> {
