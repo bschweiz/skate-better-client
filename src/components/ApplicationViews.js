@@ -6,6 +6,7 @@ import { HomeView } from "./home/HomeView"
 import { HomeViewProvider } from "./home/HomeViewProvider"
 import { OpponentProvider } from "./opponent/OpponentProvider"
 import { OpponentSelect } from "./opponent/OpponentSelect"
+import { GameProvider } from "./game/GameProvider"
 import { GamePlay } from "./game/GamePlay"
 import { TrickProvider } from "./trick/TrickProvider"
 
@@ -15,22 +16,22 @@ export const ApplicationViews = (props) => {
         <>
             <HomeViewProvider>
                 <OpponentProvider>
-                <GameProvider>
-                <TrickProvider>
-                    <Route exact path='/' render={
-                        props => <HomeView {...props} />
-                    }>
-                    </Route>
-                    <Route exact path='/play' render={
-                        props => <OpponentSelect {...props} />
-                    }>
-                    </Route>
-                    <Route exact path='/game/new' render={
-                        props => <GamePlay {...props} />
-                    }>
-                    </Route>
-                </TrickProvider>
-                </GameProvider>
+                    <GameProvider>
+                        <TrickProvider>
+                            <Route exact path='/' render={
+                                props => <HomeView {...props} />
+                            }>
+                            </Route>
+                            <Route exact path='/play' render={
+                                props => <OpponentSelect {...props} />
+                            }>
+                            </Route>
+                            <Route exact path='/game/new' render={
+                                props => <GamePlay {...props} />
+                            }>
+                            </Route>
+                        </TrickProvider>
+                    </GameProvider>
                 </OpponentProvider>
             </HomeViewProvider>
         </>
