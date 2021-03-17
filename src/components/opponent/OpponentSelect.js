@@ -26,7 +26,6 @@ export const OpponentSelect = (props) => {
 
 
 
-
     return (
         <form className="opponentSelect">
             <fieldset>
@@ -45,7 +44,7 @@ export const OpponentSelect = (props) => {
             <button type="submit"
                 onClick={evt => {
                     evt.preventDefault()
-                    history.push({pathname: "/game-on" })
+                    history.push({pathname: "/game/new" })
                 }}
                 className="btn btn-primary">
                 START SKATING!

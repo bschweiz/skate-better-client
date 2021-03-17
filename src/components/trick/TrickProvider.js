@@ -6,14 +6,21 @@ export const TrickProvider = (props) => {
 
     const [allTricks, setAllTricks] = useState([])
 
-    const getAllOpponents = () => {
-        return fetch("http://localhost:8000/opponent", {
+    const getAllTricks = () => {
+        return fetch("http://localhost:8000/tricks", {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("sb_token")}`
             }
         })
             .then(response => response.json())
-            .then(setAllOpponents)
+            .then(setAllTricks)
     }
 
+    return (
+        <TrickContext.Provider value={{
+            allTricks, getAllTricks
+        }}>
+            {props.children}
+        </TrickContext.Provider>
+    )
 }
