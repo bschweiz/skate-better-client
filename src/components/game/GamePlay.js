@@ -4,11 +4,11 @@ import { GameContext } from "./GameProvider"
 
 export const GamePlay = (props) => {
     const { getTricks, tricks } = useContext(TrickContext)
-    const { getPlantData, plants } = useContext(PlantContext)
-    const [ filteredEvents, setFilteredEvents ] = useState([])
+
+    const [ availableTricks, setAvailableTricks ] = useState([])
     
     useEffect(() => {
-        getEvents().then(getPlantData)
+        getTrickss()
     }, [])
     
     useEffect (()=> {
@@ -29,18 +29,13 @@ export const GamePlay = (props) => {
         
     }, [plants, events])
 
-    if (events.length && plants.length) {
+    if (tricks.length) {
         return (
-            <div className="events"> <h3>Upcoming Care Events</h3>
-            {/* <button
-                onClick={evt => {
-                    // console.log(evt)
-                    // showCompleted({ plant })
-                }}
-            >View Completed Cares </button> */}
+            <div className="ticks"> <h3>Tricks List</h3>
+            
                 {
-                    sortedAttempt(filteredEvents).map(event => {
-                        return <EventCard key={event.id} event={event} props={props}/>
+                    tricks.map(t => {
+                        return <TrickCard key={event.id} event={event} props={props}/>
                     })
                 }
             </div>)
