@@ -45,7 +45,7 @@ export const OpponentSelect = (props) => {
             <button type="submit"
                 onClick={evt => {
                     evt.preventDefault()
-                    history.push({pathname: "/game" })
+                    history.push({pathname: "/game-on" })
                 }}
                 className="btn btn-primary">
                 START SKATING!
