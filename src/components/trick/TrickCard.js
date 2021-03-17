@@ -1,46 +1,44 @@
 import React, { useContext, useEffect } from "react"
 import { Link } from "react-router-dom"
-import { TrickContext } from "./EventProvider"
+import { TrickContext } from "./TrickProvider"
 import "./TrickCard.css"
 
 
 
-export const EventCard = ({ event, props }) => {
+export const TrickCard = ({ trick, props }) => {
 
-    const { tricks, getTricks } = useContext(TrickContext)
-    // debugger
-    useEffect(() => {
-        getTricks()
-    }, [])
+    // const { tricks, getTricks } = useContext(TrickContext)
+    // // debugger
+    // useEffect(() => {
+    //     getTricks()
+    // }, [])
 
-    const matchingPlant = plants.find(p => p.id === event.plantId)
+    // const matchingPlant = plants.find(p => p.id === event.plantId)
     
-    const checkboxControl = (evt) => {
-        if(evt.target.checked === true){
-            updateCompleted(parseInt(evt.target.id), {complete: true})
-        } else {
-            updateCompleted(parseInt(evt.target.id), {complete: false})
-        }
-    }
+    // const checkboxControl = (evt) => {
+    //     if(evt.target.checked === true){
+    //         updateCompleted(parseInt(evt.target.id), {complete: true})
+    //     } else {
+    //         updateCompleted(parseInt(evt.target.id), {complete: false})
+    //     }
+    // }
     
-    if (matchingPlant == null) { return <div></div> } else {
+    
         return (
-            <section className="event_info">
+            <section className="trick_info">
         
-                <Link className="card-link"
-                    to={{
-                        pathname: `/events/${event.id}`,
-                        state: { chosenEvent: event, chosenPlant: matchingPlant }
-                    }}>
-                    <h4 className="event__title">{event.water ? "Water" : "Check-up on"} {matchingPlant.petName} ({event.date})</h4>
-                </Link>
-                    <label htmlFor={event.id}>{event.complete ? "Completed" : "Check to mark as completed"}</label>
-                    <input type="checkbox" key={event.id} id={event.id} name="checkbox" checked=
-                    {event.complete ? "checked": ""}
+                    <input type="checkbox" key={trick.id} id={trick.id} name="checkbox" checked=
+                    {trick.stance ? "checked": ""}
                     onChange={evt=>{
-                        checkboxControl(evt)
+                        console.log(evt)
+                    }} />
+                    <label htmlFor={trick.id}>{trick.name}</label>
+                    <input type="checkbox" key={trick.id} id={trick.id} name="checkbox" checked=
+                    {trick.stance ? "checked": ""}
+                    onChange={evt=>{
+                        console.log(evt)
                     }} />
             </section>
         )
-    }
+    
 }
