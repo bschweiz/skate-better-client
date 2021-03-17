@@ -43,31 +43,24 @@ export const OpponentSelect = (props) => {
 
     return (
         <form className="opponentSelect">
+            <h2>Who are we playing?</h2>
             <fieldset>
                 <div className="form-group">
 
                     <select className="form-control" type="text" name="opponentId" autoFocus
                         onChange={changeGameDetails}
                     >
-                        <option value='0'>Play Previous Opponent</option>
+                        <option value='0'>Previous Opponents</option>
                         {allOpponents.map(o => (
                             <option key={o.id} value={o.id}>{o.handle}</option>
                         ))}
                     </select>
                 </div>
             </fieldset>
-            <button type="submit"
-                onClick={evt => {
-                    evt.preventDefault()
-                    createGame(gameDetails)
-                    history.push({pathname: "/game/new" })
-                }}
-                className="btn btn-primary">
-                START SKATING!
-            </button>
+            <h2>New Opponent:</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="maker">Name or Nickname: </label>
+                    <label htmlFor="maker">Name: </label>
                     <input type="text" name="handle" required autoFocus className="form-control"
                         
                         onChange={changeNewOpponentState}
@@ -78,7 +71,15 @@ export const OpponentSelect = (props) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="goofyStatus">Goofy-footed?  </label>
-                    <input type="checkbox" id="goofy" required autoFocus placeholder="stance" />
+                    <select className="form-control" type="text" name="goofy" autoFocus
+                        onChange={changeGameDetails}
+                    >
+                        <option value='0'>Stance:</option>
+                        
+                            <option key={0} value={0}>Regular</option>
+                            <option key={0} value={0}>Goofy</option>
+                        
+                    </select>
                 </div>
             </fieldset>
 
@@ -104,11 +105,12 @@ export const OpponentSelect = (props) => {
             <button type="submit"
                 onClick={evt => {
                     evt.preventDefault()
-
+                    createGame(gameDetails)
+                    history.push({pathname: "/game/new" })
                 }}
                 className="btn btn-primary">
-                Enter details later, just start SKATING
-        </button>
+                START SKATING!
+            </button>
         </form>
     )
 }
