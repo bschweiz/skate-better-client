@@ -1,43 +1,54 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useHistory } from 'react-router'
 import { OpponentContext } from "./OpponentProvider"
-import { GameContext} from "../game/GameProvider"
+import { GameContext } from "../game/GameProvider"
 
 export const OpponentSelect = (props) => {
     const history = useHistory()
 
-    const { allOpponents, addOpponent, getAllOpponents } = useContext(OpponentContext)
-    const { createGame } = useContext(GameContext)
+    const { allOpponents, getAllOpponents } = useContext(OpponentContext)
+    const { createGame, createNewOpponentGame } = useContext(GameContext)
+
+    const [thisLocation, setThisLocation] = useState({
+        location: ""
+    })
 
     const [newOpponent, setNewOpponent] = useState({
-        handle: '',
-        goofy: false
+        handle: 'annonymous',
+        goofy: null,
     })
 
     const [gameDetails, setGameDetails] = useState({
         opponentId: 0,
-        location: "somewhere flat"
     })
 
     useEffect(() => {
         getAllOpponents()
     }, [])
 
+    useEffect(() => {
+        console.log("newOpponent State: ", newOpponent, "gameDetails State: ", gameDetails, "thisLocation: ", thisLocation)
+    }, [gameDetails, newOpponent, thisLocation])
+
     const changeNewOpponentState = (DOMEvent) => {
         const newOpponentState = Object.assign({}, newOpponent)
 
         newOpponentState[DOMEvent.target.name] = DOMEvent.target.value
         setNewOpponent(newOpponentState)
-        console.log("newOpponent State: ", newOpponent)
     }
 
     const changeGameDetails = (DOMEvent) => {
         const newGameState = Object.assign({}, gameDetails)
 
-        newGameState[DOMEvent.target.name] = DOMEvent.target.value
-        console.log(DOMEvent.target)
+        newGameState[DOMEvent.target.name] = DOMEvent.target.value   
         setGameDetails(newGameState)
-        console.log("gameDetails State: ", gameDetails)
+    }
+    
+    const changeLocation = (DOMEvent) => {
+        const newLocationState = Object.assign({}, thisLocation)
+
+        newLocationState[DOMEvent.target.name] = DOMEvent.target.value   
+        setThisLocation(newLocationState)
     }
 
 
@@ -57,12 +68,12 @@ export const OpponentSelect = (props) => {
                     </select>
                 </div>
             </fieldset>
-            <h2>New Opponent:</h2>
+            <h3>New Opponent:</h3>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="maker">Name: </label>
                     <input type="text" name="handle" required autoFocus className="form-control"
-                        
+
                         onChange={changeNewOpponentState}
                     />
                 </div>
@@ -72,32 +83,20 @@ export const OpponentSelect = (props) => {
                 <div className="form-group">
                     <label htmlFor="goofyStatus">Goofy-footed?  </label>
                     <select className="form-control" type="text" name="goofy" autoFocus
-                        onChange={changeGameDetails}
-                    >
-                        <option value='0'>Stance:</option>
-                        
-                            <option key={0} value={0}>Regular</option>
-                            <option key={0} value={0}>Goofy</option>
-                        
+                        onChange={changeNewOpponentState}>
+
+                        <option value={0}>Regular</option>
+                        <option value={1}>Goofy</option>
+
                     </select>
                 </div>
             </fieldset>
-
-            <button type="submit"
-                onClick={evt => {
-                    evt.preventDefault()
-
-                }}
-                className="btn btn-primary">
-                Save new Opponet, start SKATING
-            </button>
 
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="maker">Location: </label>
                     <input type="text" name="location" required autoFocus className="form-control"
-                        
-                        onChange={changeGameDetails}
+                        onChange={changeLocation}
                     />
                 </div>
             </fieldset>
@@ -105,8 +104,19 @@ export const OpponentSelect = (props) => {
             <button type="submit"
                 onClick={evt => {
                     evt.preventDefault()
-                    createGame(gameDetails)
-                    history.push({pathname: "/game/new" })
+                    if (gameDetails.opponentId != 0) {
+                        const fullGameDetails = Object.assign({}, gameDetails)
+                        fullGameDetails['location'] = thisLocation.location
+                        createGame(fullGameDetails)
+                        history.push({ pathname: "/game/new" })
+                    }
+                    else {
+                        createNewOpponentGame(newOpponent)
+                        const newOpponentGame = Object.assign({}, newOpponent)
+                        newOpponentGame['location'] = thisLocation.location
+                        createNewOpponentGame(newOpponentGame)
+                        history.push({ pathname: "/game/new" })
+                    }
                 }}
                 className="btn btn-primary">
                 START SKATING!

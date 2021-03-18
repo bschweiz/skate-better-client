@@ -17,14 +17,27 @@ export const GameProvider = (props) => {
             .then(setAllGames)
     }
     
-    const createGame = (game) => {
+    const createGame = (gameDetails) => {
         return fetch("http://localhost:8000/game", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Token ${localStorage.getItem("sb_token")}`
             },
-            body: JSON.stringify(game)
+            body: JSON.stringify(gameDetails)
+        })
+            .then(response => response.json())
+            .then(getAllGames)
+    }
+    
+    const createNewOpponentGame = (newOpponentGame) => {
+        return fetch("http://localhost:8000/game/addnewopponent", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("sb_token")}`
+            },
+            body: JSON.stringify(newOpponentGame)
         })
             .then(response => response.json())
             .then(getAllGames)
@@ -32,7 +45,7 @@ export const GameProvider = (props) => {
 
     return (
         <GameContext.Provider value={{
-            allGames, getAllGames, createGame
+            allGames, getAllGames, createGame, createNewOpponentGame
         }}>
             {props.children}
         </GameContext.Provider>
