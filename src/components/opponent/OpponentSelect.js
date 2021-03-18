@@ -40,14 +40,14 @@ export const OpponentSelect = (props) => {
     const changeGameDetails = (DOMEvent) => {
         const newGameState = Object.assign({}, gameDetails)
 
-        newGameState[DOMEvent.target.name] = DOMEvent.target.value   
+        newGameState[DOMEvent.target.name] = DOMEvent.target.value
         setGameDetails(newGameState)
     }
-    
+
     const changeLocation = (DOMEvent) => {
         const newLocationState = Object.assign({}, thisLocation)
 
-        newLocationState[DOMEvent.target.name] = DOMEvent.target.value   
+        newLocationState[DOMEvent.target.name] = DOMEvent.target.value
         setThisLocation(newLocationState)
     }
 
@@ -104,22 +104,30 @@ export const OpponentSelect = (props) => {
             <button type="submit"
                 onClick={evt => {
                     evt.preventDefault()
+
                     if (gameDetails.opponentId != 0) {
                         const fullGameDetails = Object.assign({}, gameDetails)
                         fullGameDetails['location'] = thisLocation.location
                         createGame(fullGameDetails)
                         history.push({ pathname: "/game/new" })
                     }
+                    
+                    else if 
+                        ((allOpponents).forEach((o) => Object.values(o).includes(newOpponent.handle)))
+                            { alert("This opponent handle already exist, please choose a unique name."); }
+
                     else {
-                        const newOpponentGame = Object.assign({}, newOpponent)
-                        newOpponentGame['location'] = thisLocation.location
-                        createNewOpponentGame(newOpponentGame)
-                        history.push({ pathname: "/game/new" })
+                    const newOpponentGame = Object.assign({}, newOpponent)
+                    newOpponentGame['location'] = thisLocation.location
+                    createNewOpponentGame(newOpponentGame)
+                    history.push({ pathname: "/game/new" })}
+
                     }
-                }}
+                }
+                
                 className="btn btn-primary">
                 START SKATING!
             </button>
-        </form>
+        </form >
     )
 }
