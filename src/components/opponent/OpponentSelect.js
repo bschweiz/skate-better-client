@@ -13,6 +13,8 @@ export const OpponentSelect = (props) => {
         location: ""
     })
 
+    const [handleList, setHandleList] = useState([])
+
     const [newOpponent, setNewOpponent] = useState({
         handle: 'annonymous',
         goofy: null,
@@ -25,6 +27,11 @@ export const OpponentSelect = (props) => {
     useEffect(() => {
         getAllOpponents()
     }, [])
+
+    useEffect(() => {
+        const opponentNames = allOpponents.map((o) => o.handle)
+        setHandleList(opponentNames)
+    }, [allOpponents])
 
     useEffect(() => {
         console.log("newOpponent State: ", newOpponent, "gameDetails State: ", gameDetails, "thisLocation: ", thisLocation)
@@ -115,8 +122,9 @@ export const OpponentSelect = (props) => {
                     
                     else  
                         if 
-                        ((allOpponents).forEach((o) => Object.values(o).includes(newOpponent.handle)))
-                            { alert("This opponent handle already exist, please choose a unique name.")}
+                        (handleList.includes(newOpponent.handle))
+                            { alert("This opponent handle already exist, please choose a unique name.")
+                            return; }
 
                     else {
                     const newOpponentGame = Object.assign({}, newOpponent)
