@@ -103,18 +103,20 @@ export const OpponentSelect = (props) => {
 
             <button type="submit"
                 onClick={evt => {
+                    debugger
                     evt.preventDefault()
 
-                    if (gameDetails.opponentId != 0) {
+                    if (gameDetails.opponentId !== 0) {
                         const fullGameDetails = Object.assign({}, gameDetails)
                         fullGameDetails['location'] = thisLocation.location
                         createGame(fullGameDetails)
                         history.push({ pathname: "/game/new" })
                     }
                     
-                    else if 
+                    else  
+                        if 
                         ((allOpponents).forEach((o) => Object.values(o).includes(newOpponent.handle)))
-                            { alert("This opponent handle already exist, please choose a unique name."); }
+                            { alert("This opponent handle already exist, please choose a unique name.")}
 
                     else {
                     const newOpponentGame = Object.assign({}, newOpponent)
