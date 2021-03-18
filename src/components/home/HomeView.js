@@ -5,19 +5,19 @@ import { useHistory } from 'react-router'
 import { HomeViewContext } from "./HomeViewProvider"
 
 export const HomeView = (props) => {
-    
+
     const history = useHistory()
-    const [ games, setGames ] = useState([])
+    const [games, setGames] = useState([])
     const { profile, getProfile } = useContext(HomeViewContext)
 
     useEffect(() => {
         getProfile()
     }, [])
-    
+
     useEffect(() => {
-        const games = profile.games
+        const myGames = profile.games
         console.log(profile)
-        setGames(games)
+        setGames(myGames)
     }, [profile])
 
 
@@ -31,19 +31,21 @@ export const HomeView = (props) => {
                 <h1>Welcome Back Champ!</h1>
                 <h3>{profile.handle}</h3>
                 <h3>Your past games</h3>
-                {/* {
-                    games.map(game => {
-                        return <p>
+                { (profile.games) ?
+                    {
+                        profile.games.map(game => {
+                            return <p>
+                                <div className="game__title">Vs opponent id: {game.opponent} at {game.location}</div>
+                                <div className="game__players"> on {game.date_time} players needed</div>
+                                <div className="game__description">Who won? {game.won ? "YOU!" : "Not you, unfortunately."}</div>
 
-                            <div className="game__title">Vs opponent id: {game.opponent} at {game.location}</div>
-                            <div className="game__players"> on {game.date_time} players needed</div>
-                            <div className="game__description">Who won? {game.won ? "YOU!" : "Not you, unfortunately."}</div>
-
-                        </p>
+                            </p>
+                        }
+                        )
                     }
+                    : return <></>
 
-                    )
-                } */}
+                }
 
                 <button className="nav-link"
                     onClick={() => {
