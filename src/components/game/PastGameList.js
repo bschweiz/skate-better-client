@@ -6,30 +6,24 @@ import { PastGameCard } from "./PastGameCard"
 
 
 
-export const PastGameList = (props) => {
+export const PastGameList = ({props}) => {
 
-    const [games, setGames] = useState([])
     const { allGames, getAllGames } = useContext(GameContext)
-    const { profile, getProfile } = useContext(HomeViewContext)
+    const [games, setGames] = useState([])
 
     useEffect(() => {
-        getProfile()
+        getAllGames()
     }, [])
 
     useEffect(() => {
-        const myGames = profile.games
-        console.log(profile)
-        setGames(myGames)
-    }, [profile])
-
-    useEffect(() => {
-        console.log("test to see if the array of results came back")
-        console.log(games)
-        }, [games])
+        const games = allGames
+        console.log(allGames)
+        setGames(games)
+    }, [allGames])
         
     return <div className="past_game_list">Your Past Games:
     {
-        games.map(game => <PastGameCard key={game.id} game={game} />)
+        games.map(game => <PastGameCard key={game.id} game={game} props={props}/>)
     }
     </div>
     

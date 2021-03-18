@@ -4,23 +4,23 @@ import "./PastGameCard.css"
 
 
 
-export const PastGameCard = ({game}) => {
+export const PastGameCard = ({ game }) => {
 
-            return <p>
-                <div className="game__title">Vs opponent id: {game.opponent} at {game.location}</div>
-                <div className="game__players"> on {game.date_time} players needed</div>
-                <div className="game__description">Who won? {game.won ? "YOU!" : "Not you, unfortunately."}</div>
+    return <section className="game__info" key={game.id}>
+        <div className="game__title">Vs opponent id: {game.opponent.handle} at {game.location}</div>
+        <div className="game__players"> on {game.date_time} players needed</div>
+        <div className="game__description">Who won? {game.won ? "YOU!" : "Not you, unfortunately."}</div>
 
-            </p>
-    
-    
+        </section>
+
+
 }
 
 
 
-       
-    
-    
+
+
+
 
 
 // return (
@@ -36,7 +36,7 @@ export const PastGameCard = ({game}) => {
 //         <h3 className="common__name">{game.date_time}</h3>
 //         <div className="scientific__name">Won ?{game.won}</div>
 //         <div className="scientific__name">Where ?{game.location}</div>
-        
-        
+
+
 //     </section>
 // )
