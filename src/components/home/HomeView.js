@@ -3,7 +3,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import { HomeViewContext } from "./HomeViewProvider"
-import { PastGameCard } from "../game/PastGameCard"
+import { PastGameList } from "../game/PastGameList"
  
 export const HomeView = (props) => {
 
