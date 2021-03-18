@@ -111,7 +111,6 @@ export const OpponentSelect = (props) => {
                         history.push({ pathname: "/game/new" })
                     }
                     else {
-                        createNewOpponentGame(newOpponent)
                         const newOpponentGame = Object.assign({}, newOpponent)
                         newOpponentGame['location'] = thisLocation.location
                         createNewOpponentGame(newOpponentGame)
