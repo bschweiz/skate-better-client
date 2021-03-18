@@ -32,21 +32,8 @@ export const HomeView = (props) => {
                 <h1>Welcome Back Champ!</h1>
                 <h3>{profile.handle}</h3>
                 <h3>Your past games</h3>
-                { (profile.games) ?
-                    {
-                        profile.games.map(game => {
-                            return <p>
-                                <div className="game__title">Vs opponent id: {game.opponent} at {game.location}</div>
-                                <div className="game__players"> on {game.date_time} players needed</div>
-                                <div className="game__description">Who won? {game.won ? "YOU!" : "Not you, unfortunately."}</div>
-
-                            </p>
-                        }
-                        )
-                    }
-                    : return <></>
-
-                }
+                
+                <PastGameList key={profile.id} profile={profile} props={props}/>
 
                 <button className="nav-link"
                     onClick={() => {

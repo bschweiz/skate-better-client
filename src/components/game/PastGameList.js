@@ -1,22 +1,35 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import { Link } from "react-router-dom"
+import { HomeViewContext } from "../home/HomeViewProvider"
 import { GameContext } from "./GameProvider"
 import { PastGameCard } from "./PastGameCard"
 
 
 
-export const PastGameList = (games) => {
+export const PastGameList = (props) => {
 
-    const { profile } = useContext(HomeViewContext)
+    const [games, setGames] = useState([])
+    const { allGames, getAllGames } = useContext(GameContext)
+    const { profile, getProfile } = useContext(HomeViewContext)
+
+    useEffect(() => {
+        getProfile()
+    }, [])
+
+    useEffect(() => {
+        const myGames = profile.games
+        console.log(profile)
+        setGames(myGames)
+    }, [profile])
+
+    useEffect(() => {
+        console.log("test to see if the array of results came back")
+        console.log(games)
+        }, [games])
         
-    // useEffect(() => {
-    //     console.log("test to see if the array of results came back")
-    //     console.log(fuzzyResultArray)
-    //     }, [fuzzyResultArray])
-        
-    return <div className="trefle_results">Your Results:
+    return <div className="past_game_list">Your Past Games:
     {
-        fuzzyResultArray.map(pla => <TrefleCard key={pla.id} plant={pla} />)
+        games.map(game => <PastGameCard key={game.id} game={game} />)
     }
     </div>
     
