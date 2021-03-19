@@ -36,7 +36,7 @@ export const GamePlay = (props) => {
             <fieldset>
                 <div className="form-group">
 
-                    <select className="form-control" type="text" name="trickSelect" autoFocus
+                    <select className="form-control" type="text" name="trickId" autoFocus
                         onChange={changeCurrentTrick}
                     >
                         <option value='0'>Available Tricks</option>
