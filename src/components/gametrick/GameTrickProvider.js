@@ -43,7 +43,7 @@ export const GameTrickProvider = (props) => {
     
     return (
         <GameTrickContext.Provider value={{
-            allGameTricks, getAllGameTricks, createGameTrick, theseGameTricks
+            allGameTricks, theseGameTricks, getAllGameTricks, createGameTrick, getGameTricksByGame 
         }}>
             {props.children}
         </GameTrickContext.Provider>
