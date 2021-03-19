@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from 'react'
 import { GameContext } from "./GameProvider"
 import { GameTrickContext } from "../gametrick/GameTrickProvider"
 import { TrickContext } from "../trick/TrickProvider"
+import { TrickCard } from "../trick/TrickCard"
 import { GameTrickCard } from "../gametrick/GameTrickCard"
 
 
 export const GamePlay = (props) => {
+    const { newestGameId } = useContext(GameContext)
     const { getAllTricks, allTricks } = useContext(TrickContext)
-    const { getAllGameTricks, allGameTricks } = useContext(GameTrickContext)
+    const { getGameTricksByGame, theseGameTricks } = useContext(GameTrickContext)
 
     const [ availableTricks, setAvailableTricks ] = useState([])
     
@@ -16,10 +18,13 @@ export const GamePlay = (props) => {
     })
     
     useEffect(() => {
-        console.log(props)
         getAllTricks()
-        .then(getAllGameTricks())
     }, [])
+    
+    useEffect(() => {
+        console.log("newest game id: ", newestGameId)
+        getGameTricksByGame(newestGameId)
+    }, [newestGameId])
     
     useEffect(() => {
         setAvailableTricks(allTricks)
@@ -51,15 +56,18 @@ export const GamePlay = (props) => {
                 </div>
             </fieldset> : <div></div>}
 
-            <h2>Full Trick List:</h2>
+            <h2>Game in Progress:</h2>
             <div className="tricks"> <h3>Tricks List</h3>
             
                 {
-                    allGameTricks.map(gt => {
+                    theseGameTricks.map(gt => {
                         return <GameTrickCard key={gt.id} gametrick={gt} props={props}/>
                     })
                 }
             </div>
+
+            <h3>Current Trick: </h3>
+            {  currentTrick.trickId ? <TrickCard key={currentTrick.id} trick={allTricks.find( t => t.id == [currentTrick.trickId])} props={props}/> : <></> }
             </>
             )
     }

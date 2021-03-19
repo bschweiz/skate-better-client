@@ -6,7 +6,7 @@ export const GameContext = React.createContext()
 export const GameProvider = (props) => {
 
     const [allGames, setAllGames] = useState([])
-    const [newestGame, setNewestGame] = useState([])
+    const [newestGameId, setNewestGameId] = useState([])
 
     const getAllGames = () => {
         return fetch("http://localhost:8000/game", {
@@ -28,6 +28,7 @@ export const GameProvider = (props) => {
             body: JSON.stringify(gameDetails)
         })
             .then(response => response.json())
+            .then(data => setNewestGameId(data.id))
             .then(getAllGames)
     }
     
@@ -46,7 +47,7 @@ export const GameProvider = (props) => {
 
     return (
         <GameContext.Provider value={{
-            allGames, getAllGames, createGame, createNewOpponentGame
+            allGames, newestGameId, getAllGames, createGame, createNewOpponentGame
         }}>
             {props.children}
         </GameContext.Provider>

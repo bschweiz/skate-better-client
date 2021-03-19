@@ -23,7 +23,7 @@ export const GameTrickCard = ({ gametrick, props }) => {
     //     }
     // }
     
-    debugger
+    
         return (
             <section className="trick_info">
         
