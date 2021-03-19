@@ -21,6 +21,21 @@ export const GamePlay = (props) => {
     
     
         return (
+            <h2>Which trick? (Available Tricks)</h2>
+            <fieldset>
+                <div className="form-group">
+
+                    <select className="form-control" type="text" name="opponentId" autoFocus
+                        onChange={changeGameDetails}
+                    >
+                        <option value='0'>Previous Opponents</option>
+                        {allOpponents.map(o => (
+                            <option key={o.id} value={o.id}>{o.handle}</option>
+                        ))}
+                    </select>
+                </div>
+            </fieldset>
+            <h2>Full Trick List:</h2>
             <div className="tricks"> <h3>Tricks List</h3>
             
                 {
