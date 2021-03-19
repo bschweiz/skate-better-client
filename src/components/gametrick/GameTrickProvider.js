@@ -5,10 +5,21 @@ export const GameTrickContext = React.createContext()
 
 export const GameTrickProvider = (props) => {
 
-    const [allGameTricks, setTheseGameTricks] = useState([])
+    const [allGameTricks, setAllGameTricks] = useState([])
+    const [theseGameTricks, setTheseGameTricks] = useState([])
 
-    const getTheseGameTricks = () => {
-        return fetch("http://localhost:8000/gametrick", {
+    const getAllGameTricks = () => {
+        return fetch("http://localhost:8000/gametricks", {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("sb_token")}`
+            }
+        })
+            .then(response => response.json())
+            .then(setAllGameTricks)
+    }
+    
+    const getGameTricksByGame = (gameId) => {
+        return fetch(`http://localhost:8000/gametricks?game=${gameId}`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("sb_token")}`
             }
@@ -18,7 +29,7 @@ export const GameTrickProvider = (props) => {
     }
     
     const createGameTrick = (gametrickDetails) => {
-        return fetch("http://localhost:8000/gametrick", {
+        return fetch("http://localhost:8000/gametricks", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -27,12 +38,12 @@ export const GameTrickProvider = (props) => {
             body: JSON.stringify(gametrickDetails)
         })
             .then(response => response.json())
-            .then(getTheseGameTricks)
+            .then(getAllGameTricks)
     }
     
     return (
         <GameTrickContext.Provider value={{
-            allGameTricks, getTheseGameTricks, createGameTrick
+            allGameTricks, getAllGameTricks, createGameTrick, theseGameTricks
         }}>
             {props.children}
         </GameTrickContext.Provider>

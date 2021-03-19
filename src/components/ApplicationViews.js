@@ -7,8 +7,9 @@ import { HomeViewProvider } from "./home/HomeViewProvider"
 import { OpponentProvider } from "./opponent/OpponentProvider"
 import { OpponentSelect } from "./opponent/OpponentSelect"
 import { GameProvider } from "./game/GameProvider"
-import { GamePlay } from "./game/GamePlay"
 import { TrickProvider } from "./trick/TrickProvider"
+import { GameTrickProvider } from "./gametrick/GameTrickProvider"
+import { GamePlay } from "./game/GamePlay"
 import { PastGameList } from "./game/PastGameList"
 
 
@@ -19,22 +20,24 @@ export const ApplicationViews = (props) => {
                 <OpponentProvider>
                     <GameProvider>
                         <TrickProvider>
-                            <Route exact path='/' render={
-                                props => <HomeView {...props} />
-                            }>
-                            </Route>
-                            <Route exact path='/play' render={
-                                props => <OpponentSelect {...props} />
-                            }>
-                            </Route>
-                            <Route exact path='/game/new' render={
-                                props => <GamePlay {...props} />
-                            }>
-                            </Route>
-                            <Route exact path='/game/review' render={
-                                props => <PastGameList {...props} />
-                            }>
-                            </Route>
+                            <GameTrickProvider>
+                                <Route exact path='/' render={
+                                    props => <HomeView {...props} />
+                                }>
+                                </Route>
+                                <Route exact path='/play' render={
+                                    props => <OpponentSelect {...props} />
+                                }>
+                                </Route>
+                                <Route exact path='/game/new' render={
+                                    props => <GamePlay {...props} />
+                                }>
+                                </Route>
+                                <Route exact path='/game/review' render={
+                                    props => <PastGameList {...props} />
+                                }>
+                                </Route>
+                            </GameTrickProvider>
                         </TrickProvider>
                     </GameProvider>
                 </OpponentProvider>

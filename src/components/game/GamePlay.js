@@ -1,25 +1,29 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { GameContext } from "./GameProvider"
+import { GameTrickContext } from "../gametrick/GameTrickProvider"
 import { TrickContext } from "../trick/TrickProvider"
-import { TrickCard } from "../trick/TrickCard"
+import { GameTrickCard } from "../gametrick/GameTrickCard"
 
 
 export const GamePlay = (props) => {
     const { getAllTricks, allTricks } = useContext(TrickContext)
+    const { getAllGameTricks, allGameTricks } = useContext(GameTrickContext)
 
     const [ availableTricks, setAvailableTricks ] = useState([])
     
-    const [currentTrick, setCurrentTrick] = useState({
+    const [ currentTrick, setCurrentTrick ] = useState({
         trickId: 0,
     })
     
     useEffect(() => {
         console.log(props)
         getAllTricks()
+        .then(getAllGameTricks())
     }, [])
     
     useEffect(() => {
-        setAvailableTricks()
+        setAvailableTricks(allTricks)
+        console.log(availableTricks)
     }, [allTricks])
     
     const changeCurrentTrick = (DOMEvent) => {
@@ -33,7 +37,7 @@ export const GamePlay = (props) => {
         return (
             <>
             <h2>Which trick? (Available Tricks)</h2>
-            <fieldset>
+            { availableTricks ? <fieldset>
                 <div className="form-group">
 
                     <select className="form-control" type="text" name="trickId" autoFocus
@@ -45,14 +49,14 @@ export const GamePlay = (props) => {
                         ))}
                     </select>
                 </div>
-            </fieldset>
+            </fieldset> : <div></div>}
 
             <h2>Full Trick List:</h2>
             <div className="tricks"> <h3>Tricks List</h3>
             
                 {
-                    allTricks.map(t => {
-                        return <TrickCard key={t.id} trick={t} props={props}/>
+                    allGameTricks.map(gt => {
+                        return <GameTrickCard key={gt.id} gametrick={gt} props={props}/>
                     })
                 }
             </div>
