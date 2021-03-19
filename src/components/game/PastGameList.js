@@ -21,7 +21,9 @@ export const PastGameList = ({props}) => {
         setGames(games)
     }, [allGames])
         
-    return <div className="past_game_list">Your Past Games:
+    return <div className="past_game_list">Welcome Back Champ
+
+    
     {
         games.map(game => <PastGameCard key={game.id} game={game} props={props}/>)
     }
