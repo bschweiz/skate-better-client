@@ -9,6 +9,7 @@ import { OpponentSelect } from "./opponent/OpponentSelect"
 import { GameProvider } from "./game/GameProvider"
 import { GamePlay } from "./game/GamePlay"
 import { TrickProvider } from "./trick/TrickProvider"
+import { PastGameList } from "./game/PastGameList"
 
 
 export const ApplicationViews = (props) => {
@@ -28,6 +29,10 @@ export const ApplicationViews = (props) => {
                             </Route>
                             <Route exact path='/game/new' render={
                                 props => <GamePlay {...props} />
+                            }>
+                            </Route>
+                            <Route exact path='/game/review' render={
+                                props => <PastGameList {...props} />
                             }>
                             </Route>
                         </TrickProvider>
