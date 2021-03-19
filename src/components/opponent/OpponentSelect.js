@@ -110,7 +110,7 @@ export const OpponentSelect = (props) => {
 
             <button type="submit"
                 onClick={evt => {
-                    debugger
+                    // debugger
                     evt.preventDefault()
 
                     if (gameDetails.opponentId !== 0) {
