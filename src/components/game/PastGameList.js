@@ -1,15 +1,14 @@
 import React, { useEffect, useState, useContext } from "react"
-import { Link } from "react-router-dom"
-import { HomeViewContext } from "../home/HomeViewProvider"
+import { useHistory } from 'react-router'
 import { GameContext } from "./GameProvider"
 import { PastGameCard } from "./PastGameCard"
 
 
 
 export const PastGameList = ({props}) => {
-
+    const history = useHistory()
     const { allGames, getAllGames } = useContext(GameContext)
-    const [games, setGames] = useState([])
+    const [ games, setGames ] = useState([])
 
     useEffect(() => {
         getAllGames()
@@ -20,13 +19,19 @@ export const PastGameList = ({props}) => {
         console.log(allGames)
         setGames(games)
     }, [allGames])
-        
-    return <div className="past_game_list">Welcome Back Champ
 
-    
-    {
-        games.map(game => <PastGameCard key={game.id} game={game} props={props}/>)
-    }
-    </div>
-    
-    }
+    return (
+        <>
+            <div className="past_game_list">Welcome Back Champ
+                {
+                    games.map(game => <PastGameCard key={game.id} game={game} props={props} />)
+                }
+            </div>
+
+            <button className="nav-link"
+                onClick={() => {
+                    history.push({ pathname: "/" })
+                }}>Home</button>
+        </>
+    )
+}

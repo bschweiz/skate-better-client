@@ -1,25 +1,18 @@
 
 
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useHistory } from 'react-router'
 import { HomeViewContext } from "./HomeViewProvider"
-import { PastGameList } from "../game/PastGameList"
+
 
 export const HomeView = (props) => {
 
     const history = useHistory()
-    const [games, setGames] = useState([])
     const { profile, getProfile } = useContext(HomeViewContext)
 
     useEffect(() => {
         getProfile()
     }, [])
-
-    useEffect(() => {
-        const myGames = profile.games
-        console.log(profile)
-        setGames(myGames)
-    }, [profile])
 
 
     return (
