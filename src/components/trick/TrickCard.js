@@ -6,7 +6,7 @@ import "./TrickCard.css"
 
 
 export const TrickCard = ({ trick, props }) => {
-
+console.log(props)
     // const { tricks, getTricks } = useContext(TrickContext)
     // // debugger
     // useEffect(() => {
@@ -38,8 +38,17 @@ export const TrickCard = ({ trick, props }) => {
                     onChange={evt=>{
                         console.log(evt)
                     }} />
-                    <button
-                    onClick>next trick</button>
+                    <button 
+                    onClick={evt=> {
+                        evt.preventDefault()
+
+                        const newGameTrick = {
+                            gameId: newestGameId,
+                            trickId: parseInt(trick.id),
+
+
+                        }
+                    }}>next trick</button>
             </section>
         )
     
