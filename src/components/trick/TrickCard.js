@@ -13,6 +13,7 @@ export const TrickCard = ({ trick, gameId, props }) => {
     })
 
     const changeUserMake = (evt) => {
+        console.log(evt)
         const newTrickState = Object.assign({}, trickLandedState)
         if (evt.target.checked === true) {
             newTrickState[evt.target.name] = true
@@ -43,7 +44,7 @@ export const TrickCard = ({ trick, gameId, props }) => {
     return (
         <section className="trick_info">
 
-            <input type="checkbox" key="user-make" id={trick.id} name="userMake"
+            <input type="checkbox" key="user-make" id={"user-", trick.id} name="userMake"
 
                 checked={trickLandedState.userMake ? "checked" : ""}
                 onChange={evt => {
@@ -52,7 +53,7 @@ export const TrickCard = ({ trick, gameId, props }) => {
 
             />
             <label htmlFor={trick.id}>{trick.name}</label>
-            <input type="checkbox" key="opponent-make" id={trick.id} name="opponenteMake"
+            <input type="checkbox" key="opponent-make" id={"opponent-", trick.id} name="opponentMake"
 
                 checked={trickLandedState.opponentMake ? "checked" : ""}
                 onChange={evt => {
