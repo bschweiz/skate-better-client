@@ -69,7 +69,8 @@ export const GamePlay = (props) => {
             <h3>Current Trick (in progress, mutable): </h3>
             {  currentTrick.trickId ?
                 <TrickCard key={currentTrick.id}
-                    trick={allTricks.find(t => t.id == [currentTrick.trickId])} 
+                    trick={allTricks.find(t => t.id == [currentTrick.trickId])}
+                    gameId={newestGameId} 
                     props={props} />
                 : <></>
             }

@@ -5,7 +5,7 @@ import "./TrickCard.css"
 
 
 
-export const TrickCard = ({ trick, props }) => {
+export const TrickCard = ({ trick, gameId, props }) => {
 console.log(props)
     // const { tricks, getTricks } = useContext(TrickContext)
     // // debugger
@@ -23,7 +23,9 @@ console.log(props)
     //     }
     // }
     
-    
+    useEffect(() => {
+        console.log("trick:", trick, 'gameId: ', gameId)
+    }, [trick])
         return (
             <section className="trick_info">
         
@@ -43,7 +45,7 @@ console.log(props)
                         evt.preventDefault()
 
                         const newGameTrick = {
-                            gameId: newestGameId,
+                            gameId: gameId,
                             trickId: parseInt(trick.id),
 
 
