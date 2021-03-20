@@ -22,6 +22,7 @@ export const GamePlay = (props) => {
     }, [])
 
     useEffect(() => {
+        debugger
         console.log("newest game id: ", newestGameId)
         getGameTricksByGame(newestGameId)
     }, [newestGameId])
