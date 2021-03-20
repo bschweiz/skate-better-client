@@ -9,7 +9,7 @@ import { GameTrickCard } from "../gametrick/GameTrickCard"
 export const GamePlay = (props) => {
     const { newestGameId } = useContext(GameContext)
     const { getAllTricks, allTricks } = useContext(TrickContext)
-    const { getGameTricksByGame, theseGameTricks } = useContext(GameTrickContext)
+    const { getGameTricksByNewestGame, theseGameTricks } = useContext(GameTrickContext)
 
     const [availableTricks, setAvailableTricks] = useState([])
 
@@ -22,9 +22,9 @@ export const GamePlay = (props) => {
     }, [])
 
     useEffect(() => {
-        debugger
+        // don't need game id anymore, just get the gametricks by game 
         console.log("newest game id: ", newestGameId)
-        getGameTricksByGame(newestGameId)
+        getGameTricksByNewestGame()
     }, [newestGameId])
 
     useEffect(() => {
