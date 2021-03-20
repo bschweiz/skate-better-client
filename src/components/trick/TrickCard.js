@@ -38,6 +38,8 @@ export const TrickCard = ({ trick, props }) => {
                     onChange={evt=>{
                         console.log(evt)
                     }} />
+                    <button
+                    onClick>next trick</button>
             </section>
         )
     
