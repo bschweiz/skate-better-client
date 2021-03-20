@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { TrickContext } from "./TrickProvider"
+import { GameTrickContext } from "../gametrick/GameTrickProvider"
 import "./TrickCard.css"
 
 
 
 export const TrickCard = ({ trick, gameId, props }) => {
+
+    const { createGameTrick, theseGameTricks } = useContext(GameTrickContext)
 
     const [trickLandedState, setTrickLandedState] = useState({
         userMake: 0,
@@ -30,13 +32,6 @@ export const TrickCard = ({ trick, gameId, props }) => {
     //     setTrickLandedState(newTrickState)
     // }
 
-    // const UsercheckboxControl = (evt) => {
-    //     if (evt.target.checked === true) {
-    //         setTrickLandedState(parseInt(evt.target.id), { complete: true })
-    //     } else {
-    //         updateCompleted(parseInt(evt.target.id), { complete: false })
-    //     }
-    // }
 
     useEffect(() => {
         console.log("trick:", trick, 'gameId: ', gameId, 'trickLandedState: ', trickLandedState)
@@ -66,11 +61,13 @@ export const TrickCard = ({ trick, gameId, props }) => {
                     evt.preventDefault()
 
                     const newGameTrick = {
-                        gameId: gameId,
                         trickId: parseInt(trick.id),
                         userMake: trickLandedState.userMake,
                         opponentMake: trickLandedState.opponentMake
                     }
+                    
+                    createGameTrick(newGameTrick)
+
                 }}>next trick</button>
         </section>
     )

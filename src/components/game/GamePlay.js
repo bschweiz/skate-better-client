@@ -19,17 +19,12 @@ export const GamePlay = (props) => {
 
     useEffect(() => {
         getAllTricks()
+        getGameTricksByNewestGame()
     }, [])
 
     useEffect(() => {
-        // don't need game id anymore, just get the gametricks by game 
-        console.log("newest game id: ", newestGameId)
-        getGameTricksByNewestGame()
-    }, [newestGameId])
-
-    useEffect(() => {
         setAvailableTricks(allTricks)
-        console.log(availableTricks)
+        console.log("available tricks? ", availableTricks)
     }, [allTricks])
 
     const changeCurrentTrick = (DOMEvent) => {
