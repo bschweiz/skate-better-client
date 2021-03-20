@@ -57,7 +57,7 @@ export const GamePlay = (props) => {
             </fieldset> : <div></div>}
 
             <h2>Game in Progress:</h2>
-            <div className="tricks"> <h3>Tricks List</h3>
+            <div className="tricks"> <h3>Completed GameTricks List:</h3>
 
                 {
                     theseGameTricks.map(gt => {
@@ -66,7 +66,7 @@ export const GamePlay = (props) => {
                 }
             </div>
 
-            <h3>Current Trick: </h3>
+            <h3>Current Trick (in progress, mutable): </h3>
             {  currentTrick.trickId ?
                 <TrickCard key={currentTrick.id}
                     trick={allTricks.find(t => t.id == [currentTrick.trickId])} 
