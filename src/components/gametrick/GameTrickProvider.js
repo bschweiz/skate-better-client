@@ -28,6 +28,17 @@ export const GameTrickProvider = (props) => {
             .then(setTheseGameTricks)
     }
     
+    const getGameTricksByNewestGame = () => {
+        // this function uses ORM to pull the most recent game
+        return fetch(`http://localhost:8000/gametricks/currentgame`, {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("sb_token")}`
+            }
+        })
+            .then(response => response.json())
+            .then(setTheseGameTricks)
+    }
+    
     const createGameTrick = (gametrickDetails) => {
         return fetch("http://localhost:8000/gametricks", {
             method: "POST",
@@ -43,7 +54,8 @@ export const GameTrickProvider = (props) => {
     
     return (
         <GameTrickContext.Provider value={{
-            allGameTricks, theseGameTricks, getAllGameTricks, createGameTrick, getGameTricksByGame 
+            allGameTricks, theseGameTricks, getAllGameTricks, 
+            createGameTrick, getGameTricksByGame, getGameTricksByNewestGame 
         }}>
             {props.children}
         </GameTrickContext.Provider>
