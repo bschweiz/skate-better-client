@@ -8,24 +8,17 @@ import { GameTrickCard } from "../gametrick/GameTrickCard"
 
 export const GamePlay = (props) => {
     const { newestGameId } = useContext(GameContext)
-    const { getAllTricks, allTricks } = useContext(TrickContext)
+    const { getCurrentlyAvailableTricks, allTricks, availableTricks } = useContext(TrickContext)
     const { getGameTricksByNewestGame, theseGameTricks } = useContext(GameTrickContext)
-
-    const [availableTricks, setAvailableTricks] = useState([])
 
     const [currentTrick, setCurrentTrick] = useState({
         trickId: 0,
     })
 
     useEffect(() => {
-        getAllTricks()
         getGameTricksByNewestGame()
+        getCurrentlyAvailableTricks()
     }, [])
-
-    useEffect(() => {
-        setAvailableTricks(allTricks)
-        console.log("available tricks? ", availableTricks)
-    }, [allTricks])
 
     const changeCurrentTrick = (DOMEvent) => {
         const newTrickState = Object.assign({}, currentTrick)
