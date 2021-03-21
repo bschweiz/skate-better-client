@@ -8,7 +8,7 @@ import { GameTrickCard } from "../gametrick/GameTrickCard"
 
 export const GamePlay = (props) => {
     const { newestGameId } = useContext(GameContext)
-    const { getCurrentlyAvailableTricks, allTricks, availableTricks } = useContext(TrickContext)
+    const { getCurrentlyAvailableTricks, availableTricks } = useContext(TrickContext)
     const { getGameTricksByNewestGame, theseGameTricks } = useContext(GameTrickContext)
 
     const [currentTrick, setCurrentTrick] = useState({
@@ -30,11 +30,9 @@ export const GamePlay = (props) => {
 
     const resetCurrentTrick = (DOMEvent) => {
         if (DOMEvent.target.name = "reset-trick")
-        {const newTrickState = Object.assign({}, currentTrick)
-
-        setCurrentTrick({
-            trickId: 0,
-        })}
+        
+        setCurrentTrick(currentTrick.trickId = 0)
+        console.log(currentTrick)
     }
 
 
@@ -70,7 +68,8 @@ export const GamePlay = (props) => {
                 <TrickCard key={currentTrick.id}
                     trick={availableTricks.find(t => t.id == [currentTrick.trickId])}
                     gameId={newestGameId} 
-                    props={props} />
+                    props={props} 
+                    />
                 : <></>
             }
         </>
