@@ -24,7 +24,17 @@ export const GamePlay = (props) => {
         const newTrickState = Object.assign({}, currentTrick)
 
         newTrickState[DOMEvent.target.name] = DOMEvent.target.value
+        console.log(newTrickState)
         setCurrentTrick(newTrickState)
+    }
+
+    const resetCurrentTrick = (DOMEvent) => {
+        if (DOMEvent.target.name = "reset-trick")
+        {const newTrickState = Object.assign({}, currentTrick)
+
+        setCurrentTrick({
+            trickId: 0,
+        })}
     }
 
 

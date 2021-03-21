@@ -7,7 +7,7 @@ import "./TrickCard.css"
 
 export const TrickCard = ({ trick, gameId, props }) => {
 
-    const { createGameTrick, theseGameTricks } = useContext(GameTrickContext)
+    const { createGameTrick } = useContext(GameTrickContext)
 
     const [trickLandedState, setTrickLandedState] = useState({
         userMake: 0,
@@ -24,13 +24,6 @@ export const TrickCard = ({ trick, gameId, props }) => {
         }
         setTrickLandedState(newTrickState)
     }
-
-    // const changeOpponentMake = (DOMEvent) => {
-    //     const newTrickState = Object.assign({}, trickLandedState)
-
-    //     newTrickState[DOMEvent.target.name] = DOMEvent.target.value
-    //     setTrickLandedState(newTrickState)
-    // }
 
 
     useEffect(() => {
@@ -56,7 +49,7 @@ export const TrickCard = ({ trick, gameId, props }) => {
                 }}
 
             />
-            <button
+            <button name="reset-trick"
                 onClick={evt => {
                     evt.preventDefault()
 
@@ -65,7 +58,7 @@ export const TrickCard = ({ trick, gameId, props }) => {
                         userMake: trickLandedState.userMake,
                         opponentMake: trickLandedState.opponentMake
                     }
-                    
+                    console.log(evt)
                     createGameTrick(newGameTrick)
 
                 }}>next trick</button>
