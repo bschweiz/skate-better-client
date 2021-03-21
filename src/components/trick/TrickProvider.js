@@ -6,7 +6,6 @@ export const TrickContext = React.createContext()
 export const TrickProvider = (props) => {
 
     const [allTricks, setAllTricks] = useState([])
-    
     const [availableTricks, setAvailableTricks] = useState([])
 
     const getAllTricks = () => {
