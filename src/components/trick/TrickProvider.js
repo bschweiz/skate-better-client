@@ -6,6 +6,7 @@ export const TrickContext = React.createContext()
 export const TrickProvider = (props) => {
 
     const [allTricks, setAllTricks] = useState([])
+    const [availableTricks, setAvailableTricks] = useState([])
 
     const getAllTricks = () => {
         return fetch("http://localhost:8000/tricks", {
@@ -16,10 +17,20 @@ export const TrickProvider = (props) => {
             .then(response => response.json())
             .then(setAllTricks)
     }
+    
+    const getCurrentlyAvailableTricks = () => {
+        return fetch("http://localhost:8000/tricks/available", {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("sb_token")}`
+            }
+        })
+            .then(response => response.json())
+            .then(setAvailableTricks)
+    }
 
     return (
         <TrickContext.Provider value={{
-            allTricks, getAllTricks
+            allTricks, availableTricks, getAllTricks, getCurrentlyAvailableTricks
         }}>
             {props.children}
         </TrickContext.Provider>

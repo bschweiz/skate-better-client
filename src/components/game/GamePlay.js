@@ -8,30 +8,31 @@ import { GameTrickCard } from "../gametrick/GameTrickCard"
 
 export const GamePlay = (props) => {
     const { newestGameId } = useContext(GameContext)
-    const { getAllTricks, allTricks } = useContext(TrickContext)
+    const { getCurrentlyAvailableTricks, availableTricks } = useContext(TrickContext)
     const { getGameTricksByNewestGame, theseGameTricks } = useContext(GameTrickContext)
-
-    const [availableTricks, setAvailableTricks] = useState([])
 
     const [currentTrick, setCurrentTrick] = useState({
         trickId: 0,
     })
 
     useEffect(() => {
-        getAllTricks()
         getGameTricksByNewestGame()
+        getCurrentlyAvailableTricks()
     }, [])
-
-    useEffect(() => {
-        setAvailableTricks(allTricks)
-        console.log("available tricks? ", availableTricks)
-    }, [allTricks])
 
     const changeCurrentTrick = (DOMEvent) => {
         const newTrickState = Object.assign({}, currentTrick)
 
         newTrickState[DOMEvent.target.name] = DOMEvent.target.value
+        console.log(newTrickState)
         setCurrentTrick(newTrickState)
+    }
+
+    const resetCurrentTrick = (DOMEvent) => {
+        if (DOMEvent.target.name = "reset-trick")
+        
+        setCurrentTrick(currentTrick.trickId = 0)
+        console.log(currentTrick)
     }
 
 
@@ -65,9 +66,10 @@ export const GamePlay = (props) => {
             <h3>Current Trick (in progress, mutable): </h3>
             {  currentTrick.trickId ?
                 <TrickCard key={currentTrick.id}
-                    trick={allTricks.find(t => t.id == [currentTrick.trickId])}
+                    trick={availableTricks.find(t => t.id == [currentTrick.trickId])}
                     gameId={newestGameId} 
-                    props={props} />
+                    props={props} 
+                    />
                 : <></>
             }
         </>
@@ -75,20 +77,3 @@ export const GamePlay = (props) => {
 }
 
 
-        // useEffect (()=> {
-        //     const userPlants = plants.filter(p => p.userId === parseInt(localStorage.getItem("app_user_id")))
-        //     // debugger
-        //     // console.log("user plants", userPlants)
-
-        //     const subsetEvents = userPlants.map(p => {
-        //         const matchingEventArray = events.filter(e => e.plantId === p.id)
-        //         return matchingEventArray}
-        //     )
-        //     let userFilteredEvents = []
-        //     const combineArrays = (subsetEvents) => {
-        //         return subsetEvents.map(a => a.forEach(e => userFilteredEvents.push(e)))
-        //     }
-        //     combineArrays(subsetEvents)
-        //     setFilteredEvents(userFilteredEvents)
-
-        // }, [plants, events])
