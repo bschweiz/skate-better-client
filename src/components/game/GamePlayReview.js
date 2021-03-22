@@ -6,7 +6,7 @@ import { TrickCard } from "../trick/TrickCard"
 import { GameTrickCard } from "../gametrick/GameTrickCard"
 
 
-export const GamePlay = (props) => {
+export const GamePlayReview = ( props, game ) => {
     const { newestGameId, getCurrentGame, currentGame } = useContext(GameContext)
     const { getCurrentlyAvailableTricks, availableTricks } = useContext(TrickContext)
     const { getGameTricksByNewestGame, theseGameTricks } = useContext(GameTrickContext)
@@ -31,7 +31,7 @@ export const GamePlay = (props) => {
 
     return (
         <>
-            <h1>LIVE SCORE!</h1>
+            <h1>REVIEW YOUR GAME!</h1>
             {/* {<UserScore key={gt.id} gametrick={gt} props={props}></UserScore>}
             {<OpponentScore key={gt.id} gametrick={gt} props={props}></OpponentScore>} */}
             <p>YOU (): {currentGame.user_score}     THEM (): {currentGame.opponent_score}</p>
