@@ -28,30 +28,23 @@ export const GamePlay = (props) => {
         setCurrentTrick(newTrickState)
     }
 
-    const resetCurrentTrick = (DOMEvent) => {
-        if (DOMEvent.target.name = "reset-trick")
-        
-        setCurrentTrick(currentTrick.trickId = 0)
-        console.log(currentTrick)
-    }
-
-
     return (
         <>
             <h2>Which trick? (Available Tricks)</h2>
-            { availableTricks ? <fieldset>
-                <div className="form-group">
+            { availableTricks ?
+                <fieldset>
+                    <div className="form-group">
 
-                    <select className="form-control" type="text" name="trickId" autoFocus
-                        onChange={changeCurrentTrick}
-                    >
-                        <option value='0'>Available Tricks</option>
-                        {availableTricks.map(tr => (
-                            <option key={tr.id} value={tr.id}>{tr.name}</option>
-                        ))}
-                    </select>
-                </div>
-            </fieldset> : <div></div>}
+                        <select className="form-control" type="text" name="trickId" autoFocus
+                            onChange={changeCurrentTrick}
+                        >
+                            <option value='0'>Available Tricks</option>
+                            {availableTricks.map(tr => (
+                                <option key={tr.id} value={tr.id}>{tr.name}</option>
+                            ))}
+                        </select>
+                    </div>
+                </fieldset> : <div></div>}
 
             <h2>Game in Progress:</h2>
             <div className="tricks"> <h3>Completed GameTricks List:</h3>
@@ -67,9 +60,9 @@ export const GamePlay = (props) => {
             {  currentTrick.trickId ?
                 <TrickCard key={currentTrick.id}
                     trick={availableTricks.find(t => t.id == [currentTrick.trickId])}
-                    gameId={newestGameId} 
-                    props={props} 
-                    />
+                    gameId={newestGameId}
+                    props={props}
+                />
                 : <></>
             }
         </>

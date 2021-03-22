@@ -25,12 +25,11 @@ export const TrickCard = ({ trick, gameId, props }) => {
         setTrickLandedState(newTrickState)
     }
 
-
     useEffect(() => {
         console.log("trick:", trick, 'gameId: ', gameId, 'trickLandedState: ', trickLandedState)
     }, [trick, trickLandedState])
 
-    return ( trick ? 
+    return (trick ?
         <section className="trick_info">
 
             <input type="checkbox" key="user-make" id={"user-", trick.id} name="userMake"
@@ -61,6 +60,10 @@ export const TrickCard = ({ trick, gameId, props }) => {
                     }
                     console.log(evt)
                     createGameTrick(newGameTrick)
+                        .then(setTrickLandedState({
+                            userMake: 0,
+                            opponentMake: 0,
+                        }))
                     // need to not break but rerender itself, adding ternary on line 33 with return statement
 
                 }}>next trick</button>
