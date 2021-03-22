@@ -29,6 +29,7 @@ export const TrickCard = ({ trick, gameId, props }) => {
     useEffect(() => {
         console.log("trick:", trick, 'gameId: ', gameId, 'trickLandedState: ', trickLandedState)
     }, [trick, trickLandedState])
+
     return (
         <section className="trick_info">
 
@@ -60,6 +61,7 @@ export const TrickCard = ({ trick, gameId, props }) => {
                     }
                     console.log(evt)
                     createGameTrick(newGameTrick)
+                    // need to not break but rerender itself
 
                 }}>next trick</button>
         </section>
