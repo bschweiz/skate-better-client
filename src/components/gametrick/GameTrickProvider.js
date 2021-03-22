@@ -1,10 +1,12 @@
 import React, { useState, useContext } from 'react'
 import { TrickContext } from "../trick/TrickProvider"
+import { GameContext } from "../game/GameProvider"
 
 export const GameTrickContext = React.createContext()
 
 export const GameTrickProvider = (props) => {
     const { getCurrentlyAvailableTricks } = useContext(TrickContext)
+    const { getCurrentGame } = useContext(GameContext)
     const [allGameTricks, setAllGameTricks] = useState([])
     const [theseGameTricks, setTheseGameTricks] = useState([])
 
@@ -50,6 +52,7 @@ export const GameTrickProvider = (props) => {
         })
             .then(response => response.json())
             .then(getGameTricksByNewestGame)
+            .then(getCurrentGame)
             .then(getCurrentlyAvailableTricks)
     }
     
