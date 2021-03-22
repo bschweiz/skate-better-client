@@ -66,7 +66,7 @@ export const TrickCard = ({ trick, gameId, props }) => {
                         }))
                     // need to not break but rerender itself, adding ternary on line 33 with return statement
 
-                }}>next trick</button>
+                }}>log trick</button>
         </section> : <></>
     )
 
