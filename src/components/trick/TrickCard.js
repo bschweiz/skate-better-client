@@ -25,7 +25,6 @@ export const TrickCard = ({ trick, gameId, props }) => {
         setTrickLandedState(newTrickState)
     }
 
-
     useEffect(() => {
         console.log("trick:", trick, 'gameId: ', gameId, 'trickLandedState: ', trickLandedState)
     }, [trick, trickLandedState])
