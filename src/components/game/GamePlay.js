@@ -7,6 +7,7 @@ import { GameTrickCard } from "../gametrick/GameTrickCard"
 
 
 export const GamePlay = (props) => {
+    
     const { newestGameId, getCurrentGame, currentGame } = useContext(GameContext)
     const { getCurrentlyAvailableTricks, availableTricks } = useContext(TrickContext)
     const { getGameTricksByNewestGame, theseGameTricks } = useContext(GameTrickContext)
@@ -73,7 +74,7 @@ export const GamePlay = (props) => {
             <section>
                 <button className="nav-link"
                 onClick={() => {
-                    history.push({ pathname: "/" })
+                    props.history.push({ pathname: "/" })
                 }}>End Game Now</button>
             </section>
         </>
