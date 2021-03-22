@@ -7,7 +7,7 @@ import { GameTrickCard } from "../gametrick/GameTrickCard"
 
 
 export const GamePlay = (props) => {
-    const { newestGameId, currentGame } = useContext(GameContext)
+    const { newestGameId, getCurrentGame, currentGame } = useContext(GameContext)
     const { getCurrentlyAvailableTricks, availableTricks } = useContext(TrickContext)
     const { getGameTricksByNewestGame, theseGameTricks } = useContext(GameTrickContext)
 
@@ -18,6 +18,7 @@ export const GamePlay = (props) => {
     useEffect(() => {
         getGameTricksByNewestGame()
         getCurrentlyAvailableTricks()
+        getCurrentGame()
     }, [])
 
     const changeCurrentTrick = (DOMEvent) => {
@@ -30,6 +31,8 @@ export const GamePlay = (props) => {
 
     return (
         <>
+            <h1>LIVE SCORE!</h1>
+            <p>YOU: {currentGame.user_score}     THEM: {currentGame.opponent_score}</p>
             <h2>Which trick? (Available Tricks)</h2>
             { availableTricks ?
                 <fieldset>
