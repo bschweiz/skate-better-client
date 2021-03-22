@@ -65,6 +65,9 @@ export const GamePlay = (props) => {
                 />
                 : <></>
             }
+            <section>
+                <button>End Game Now</button>
+            </section>
         </>
     )
 }
