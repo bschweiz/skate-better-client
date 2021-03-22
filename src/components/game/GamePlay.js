@@ -71,7 +71,10 @@ export const GamePlay = (props) => {
                 : <></>
             }
             <section>
-                <button>End Game Now</button>
+                <button className="nav-link"
+                onClick={() => {
+                    history.push({ pathname: "/" })
+                }}>End Game Now</button>
             </section>
         </>
     )
