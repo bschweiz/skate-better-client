@@ -7,7 +7,7 @@ import { GameTrickCard } from "../gametrick/GameTrickCard"
 
 
 export const GamePlay = (props) => {
-    const { newestGameId } = useContext(GameContext)
+    const { newestGameId, currentGame } = useContext(GameContext)
     const { getCurrentlyAvailableTricks, availableTricks } = useContext(TrickContext)
     const { getGameTricksByNewestGame, theseGameTricks } = useContext(GameTrickContext)
 
