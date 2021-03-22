@@ -30,7 +30,7 @@ export const TrickCard = ({ trick, gameId, props }) => {
         console.log("trick:", trick, 'gameId: ', gameId, 'trickLandedState: ', trickLandedState)
     }, [trick, trickLandedState])
 
-    return (
+    return ( trick ? 
         <section className="trick_info">
 
             <input type="checkbox" key="user-make" id={"user-", trick.id} name="userMake"
@@ -61,10 +61,10 @@ export const TrickCard = ({ trick, gameId, props }) => {
                     }
                     console.log(evt)
                     createGameTrick(newGameTrick)
-                    // need to not break but rerender itself
+                    // need to not break but rerender itself, adding ternary on line 33 with return statement
 
                 }}>next trick</button>
-        </section>
+        </section> : <></>
     )
 
 }
