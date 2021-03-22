@@ -28,14 +28,6 @@ export const GamePlay = (props) => {
         setCurrentTrick(newTrickState)
     }
 
-    const resetCurrentTrick = (DOMEvent) => {
-        if (DOMEvent.target.name = "reset-trick")
-        
-        setCurrentTrick(currentTrick.trickId = 0)
-        console.log(currentTrick)
-    }
-
-
     return (
         <>
             <h2>Which trick? (Available Tricks)</h2>
