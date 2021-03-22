@@ -17,7 +17,7 @@ export const PastGameList = ({props}) => {
     useEffect(() => {
         const games = allGames
         console.log(allGames)
-        setGames(games)
+        setGames(games.reverse())
     }, [allGames])
 
     return (

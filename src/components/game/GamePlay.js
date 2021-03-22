@@ -32,7 +32,7 @@ export const GamePlay = (props) => {
     return (
         <>
             <h1>LIVE SCORE!</h1>
-            <p>YOU: {currentGame.user_score}     THEM: {currentGame.opponent_score}</p>
+            <p>YOU (): {currentGame.user_score}     THEM ({currentGame.opponent.handle}): {currentGame.opponent_score}</p>
             <h2>Which trick? (Available Tricks)</h2>
             { availableTricks ?
                 <fieldset>
