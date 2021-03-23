@@ -6,7 +6,7 @@ import { TrickCard } from "../trick/TrickCard"
 import { GameTrickCard } from "../gametrick/GameTrickCard"
 
 export const GameOver = (props) => {
-debugger
+// debugger
     return (
         <>
             <h1>YOU {props.location.game.won ? "WON!" : "LOST!"} SCORE!</h1>
