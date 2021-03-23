@@ -1,11 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { GameContext } from "./GameProvider"
-import { GameTrickContext } from "../gametrick/GameTrickProvider"
-import { TrickContext } from "../trick/TrickProvider"
-import { TrickCard } from "../trick/TrickCard"
-import { GameTrickCard } from "../gametrick/GameTrickCard"
 
 export const GameOver = (props) => {
+    const { rematchGame } = useContext(GameContext)
     // debugger
     return (
         <>
