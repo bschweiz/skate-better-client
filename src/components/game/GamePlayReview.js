@@ -6,19 +6,19 @@ import { TrickCard } from "../trick/TrickCard"
 import { GameTrickCard } from "../gametrick/GameTrickCard"
 
 
-export const GamePlayReview = (props, game) => {
-    const { newestGameId, getCurrentGame, currentGame } = useContext(GameContext)
+export const GamePlayReview = (props) => {
+    const { newestGameId, getGameById, chosenGame } = useContext(GameContext)
     const { getCurrentlyAvailableTricks, availableTricks } = useContext(TrickContext)
     const { getGameTricksByNewestGame, theseGameTricks } = useContext(GameTrickContext)
 
     const [currentTrick, setCurrentTrick] = useState({
         trickId: 0,
     })
-
+// debugger
     useEffect(() => {
         getGameTricksByNewestGame()
         getCurrentlyAvailableTricks()
-        getCurrentGame()
+        getGameById(props.location.props.game.id)
     }, [])
 
     const changeCurrentTrick = (DOMEvent) => {
@@ -34,7 +34,7 @@ export const GamePlayReview = (props, game) => {
             <h1>REVIEW YOUR GAME!</h1>
             {/* {<UserScore key={gt.id} gametrick={gt} props={props}></UserScore>}
             {<OpponentScore key={gt.id} gametrick={gt} props={props}></OpponentScore>} */}
-            <p>YOU (): {currentGame.user_score}     THEM (): {currentGame.opponent_score}</p>
+            <p>YOU (): {chosenGame.user_score}     THEM (): {chosenGame.opponent_score}</p>
             <h2>Which trick? (Available Tricks)</h2>
             { availableTricks ?
                 <fieldset>
