@@ -59,7 +59,21 @@ export const PastGameTrickCard = ({ gametrick, props }) => {
                                                                 <option key={tr.id} value={tr.id}>{tr.name}</option>
                                                         ))}
                                                 </select>
-                                                <button>select new trick</button>
+                                                <button onClick={evt => {
+
+                                                        const editedGameTrick = {
+                                                                trickId: chosenGameTrick.trickId,
+                                                                userMake: gametrick.user_make,
+                                                                opponentMake: gametrick.opponent_make
+                                                        }
+                                                        console.log(evt)
+                                                        createGameTrick(editedGameTrick)
+                                                                .then(setTrickLandedState({
+                                                                        userMake: 0,
+                                                                        opponentMake: 0,
+                                                                }))
+                                                }}
+                                                >select new trick</button>
                                                 <button onClick={() => {
                                                         setEditMode(false)
                                                 }}>cancel</button>

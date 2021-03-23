@@ -64,9 +64,8 @@ export const TrickCard = ({ trick, gameId, props }) => {
                             userMake: 0,
                             opponentMake: 0,
                         }))
-                    // need to not break but rerender itself, adding ternary on line 33 with return statement
-
-                }}>log trick</button>
+                }}
+                >log trick</button>
         </section> : <></>
     )
 

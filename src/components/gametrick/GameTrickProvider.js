@@ -55,8 +55,8 @@ export const GameTrickProvider = (props) => {
         })
             .then(response => response.json())
             .then(getGameTricksByNewestGame)
-            .then(getCurrentGame)
-            .then(getCurrentlyAvailableTricks)
+            // .then(getCurrentGame)
+            // .then(getCurrentlyAvailableTricks)
     }
 
     return (
