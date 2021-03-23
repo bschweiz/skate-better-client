@@ -64,8 +64,7 @@ export const GameProvider = (props) => {
             body: JSON.stringify()
         })
             .then(response => response.json())
-            .then(data => setNewestGameId(data.id))
-            .then(getAllGames)
+            .then(getCurrentGame)
     }
     
     const createNewOpponentGame = (newOpponentGame) => {
