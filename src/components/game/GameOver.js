@@ -14,9 +14,9 @@ export const GameOver = (props) => {
             {<OpponentScore key={gt.id} gametrick={gt} props={props}></OpponentScore>} */}
             <p>YOU (): {props.location.game.user_score}     THEM (): {props.location.game.opponent_score}</p>
             <section>
-                <button></button>
-                <button></button>
-                <button></button>
+                <button>Rematch</button>
+                <button>Review This Game</button>
+                <button>Home</button>
             </section>
         </>
 
