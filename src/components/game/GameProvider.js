@@ -54,6 +54,20 @@ export const GameProvider = (props) => {
             .then(getAllGames)
     }
     
+    const rematchGame = () => {
+        return fetch("http://localhost:8000/game/rematch", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("sb_token")}`
+            },
+            body: JSON.stringify()
+        })
+            .then(response => response.json())
+            .then(data => setNewestGameId(data.id))
+            .then(getAllGames)
+    }
+    
     const createNewOpponentGame = (newOpponentGame) => {
         return fetch("http://localhost:8000/game/addnewopponent", {
             method: "POST",
@@ -94,7 +108,7 @@ export const GameProvider = (props) => {
             allGames, currentGame, chosenGame, newestGameId, 
             getAllGames, getCurrentGame, getGameById, 
             createGame, createNewOpponentGame, updateGame,
-            deleteGame
+            deleteGame, rematchGame
         }}>
             {props.children}
         </GameContext.Provider>
