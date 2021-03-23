@@ -11,6 +11,7 @@ import { TrickProvider } from "./trick/TrickProvider"
 import { GameTrickProvider } from "./gametrick/GameTrickProvider"
 import { GamePlay } from "./game/GamePlay"
 import { PastGameList } from "./game/PastGameList"
+import { GamePlayReview } from "./game/GamePlayReview"
 
 
 export const ApplicationViews = (props) => {
@@ -35,6 +36,10 @@ export const ApplicationViews = (props) => {
                                 </Route>
                                 <Route exact path='/game/review' render={
                                     props => <PastGameList {...props} />
+                                }>
+                                </Route>
+                                <Route exact path='/game/review/:gameId(\d+)' render={
+                                    props => <GamePlayReview {...props} />
                                 }>
                                 </Route>
                             </GameTrickProvider>
