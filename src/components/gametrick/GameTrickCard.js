@@ -8,8 +8,7 @@ import "./GameTrickCard.css"
 
 
 export const GameTrickCard = ({ gametrick, props }) => {
-        const { getCurrentlyAvailableTricks, availableTricks } = useContext(TrickContext)
-        const { getGameTricksByGame, gameTricksByGame } = useContext(GameTrickContext)
+        const { getAvailableTrickByGame, availableTricks } = useContext(TrickContext)
 
         const [chosenGameTrick, setChosenGameTrick] = useState({
                 trickId: 0,
@@ -28,7 +27,21 @@ export const GameTrickCard = ({ gametrick, props }) => {
                         <button className="edit_trick"
                                 onClick={() => {
                                         console.log(gametrick)
-                                }}>edit</button>
+                                }}>change trick</button>
+                        { availableTricks ?
+                <fieldset>
+                    <div className="form-group">
+
+                        <select className="form-control" type="text" name="trickId" autoFocus
+                            onChange={changeCurrentTrick}
+                        >
+                            <option value='0'>Available Tricks</option>
+                            {availableTricks.map(tr => (
+                                <option key={tr.id} value={tr.id}>{tr.name}</option>
+                            ))}
+                        </select>
+                    </div>
+                </fieldset> : <div></div>}
                 </section>
         )
 
