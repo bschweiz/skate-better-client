@@ -3,7 +3,7 @@ import { GameContext } from "./GameProvider"
 import { GameTrickContext } from "../gametrick/GameTrickProvider"
 import { TrickContext } from "../trick/TrickProvider"
 import { TrickCard } from "../trick/TrickCard"
-import { GameTrickCard } from "../gametrick/GameTrickCard"
+import { PastGameTrickCard } from "../gametrick/PastGameTrickCard"
 
 
 export const GamePlayReview = (props) => {
@@ -42,7 +42,7 @@ export const GamePlayReview = (props) => {
 
                 {
                     gameTricksByGame.map(gt => {
-                        return <GameTrickCard key={gt.id} gametrick={gt} props={props} />
+                        return <PastGameTrickCard key={gt.id} gametrick={gt} props={props} />
                     })
                 }
             </div>
