@@ -9,7 +9,7 @@ export const GameOver = (props) => {
     // debugger
     return (
         <>
-            <h1>YOU {props.location.game.won ? "WON!" : "LOST!"} SCORE!</h1>
+            <h1>YOU {props.location.game.won ? "WON! Congrats!" : "LOST! Oh well, better luck next time"} </h1>
             {/* {<UserScore key={gt.id} gametrick={gt} props={props}></UserScore>}
             {<OpponentScore key={gt.id} gametrick={gt} props={props}></OpponentScore>} */}
             <p>YOU (): {props.location.game.user_score}     THEM (): {props.location.game.opponent_score}</p>
