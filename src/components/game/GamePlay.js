@@ -15,7 +15,7 @@ export const GamePlay = (props) => {
     const [currentTrick, setCurrentTrick] = useState({
         trickId: 0,
     })
-
+// debugger
     useEffect(() => {
         getGameTricksByNewestGame()
         getCurrentlyAvailableTricks()
@@ -28,7 +28,7 @@ export const GamePlay = (props) => {
             console.log('someone won this game!')
             props.history.push({ pathname: "/game/over", game: currentGame })
         } else {console.log('current game: ', currentGame)}
-    }, [currentGame])
+    }, [currentGame.user_score, currentGame.opponent_score])
 
     const changeCurrentTrick = (DOMEvent) => {
         const newTrickState = Object.assign({}, currentTrick)

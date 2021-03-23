@@ -14,7 +14,10 @@ export const GameOver = (props) => {
                 <button className="nav-link"
                     onClick={() => {
                         rematchGame()
-                        props.history.push({ pathname: "/game/new" })}
+                        .then(() => 
+                        props.history.push({ pathname: "/game/new" })
+                        )
+                        }
                     }>Rematch</button>
 
                 <button className="nav-link"
