@@ -9,14 +9,15 @@ import { GameTrickCard } from "../gametrick/GameTrickCard"
 export const GamePlayReview = (props) => {
     const { newestGameId, getGameById, chosenGame } = useContext(GameContext)
     const { getCurrentlyAvailableTricks, availableTricks } = useContext(TrickContext)
-    const { getGameTricksByNewestGame, theseGameTricks } = useContext(GameTrickContext)
+    const { getGameTricksByGame, gameTricksByGame } = useContext(GameTrickContext)
 
     const [currentTrick, setCurrentTrick] = useState({
         trickId: 0,
     })
 // debugger
     useEffect(() => {
-        getGameTricksByNewestGame()
+        console.log(props)
+        getGameTricksByGame(props.location.props.game.id)
         getCurrentlyAvailableTricks()
         getGameById(props.location.props.game.id)
     }, [])
@@ -40,7 +41,7 @@ export const GamePlayReview = (props) => {
             <div className="tricks"> <h3>Completed GameTricks List:</h3>
 
                 {
-                    theseGameTricks.map(gt => {
+                    gameTricksByGame.map(gt => {
                         return <GameTrickCard key={gt.id} gametrick={gt} props={props} />
                     })
                 }

@@ -24,7 +24,7 @@ export const GameTrickProvider = (props) => {
     }
 
     const getGameTricksByGame = (gameId) => {
-        return fetch(`http://localhost:8000/gametricks?game=${gameId}`, {
+        return fetch(`http://localhost:8000/gametricks?gameId=${gameId}`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("sb_token")}`
             }
