@@ -5,10 +5,13 @@ import { GameContext } from "../game/GameProvider"
 export const GameTrickContext = React.createContext()
 
 export const GameTrickProvider = (props) => {
+
     const { getCurrentlyAvailableTricks } = useContext(TrickContext)
     const { getCurrentGame } = useContext(GameContext)
+
     const [allGameTricks, setAllGameTricks] = useState([])
     const [theseGameTricks, setTheseGameTricks] = useState([])
+    const [gameTricksByGame, setGameTricksByGame] = useState([])
 
     const getAllGameTricks = () => {
         return fetch("http://localhost:8000/gametricks", {
@@ -19,17 +22,17 @@ export const GameTrickProvider = (props) => {
             .then(response => response.json())
             .then(setAllGameTricks)
     }
-    
+
     const getGameTricksByGame = (gameId) => {
-        return fetch(`http://localhost:8000/gametricks?game=${gameId}`, {
+        return fetch(`http://localhost:8000/gametricks?gameId=${gameId}`, {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("sb_token")}`
             }
         })
             .then(response => response.json())
-            .then(setTheseGameTricks)
+            .then(setGameTricksByGame)
     }
-    
+
     const getGameTricksByNewestGame = () => {
         // this function uses ORM to pull the most recent game
         return fetch(`http://localhost:8000/gametricks/currentgame`, {
@@ -40,7 +43,7 @@ export const GameTrickProvider = (props) => {
             .then(response => response.json())
             .then(setTheseGameTricks)
     }
-    
+
     const createGameTrick = (gametrickDetails) => {
         return fetch("http://localhost:8000/gametricks", {
             method: "POST",
@@ -55,11 +58,12 @@ export const GameTrickProvider = (props) => {
             .then(getCurrentGame)
             .then(getCurrentlyAvailableTricks)
     }
-    
+
     return (
         <GameTrickContext.Provider value={{
-            allGameTricks, theseGameTricks, getAllGameTricks, 
-            createGameTrick, getGameTricksByGame, getGameTricksByNewestGame 
+            allGameTricks, theseGameTricks, gameTricksByGame,
+            getAllGameTricks, getGameTricksByNewestGame, getGameTricksByGame,
+            createGameTrick
         }}>
             {props.children}
         </GameTrickContext.Provider>
