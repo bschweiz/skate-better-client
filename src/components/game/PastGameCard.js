@@ -11,7 +11,7 @@ export const PastGameCard = ({ game }) => {
         <div className="game__players"> on {game.date_time} </div>
         <div className="game__description">Who won? {game.won ? "YOU!" : "Not you, unfortunately."}</div>
         <Link to={{
-                    pathname: `/game/${game.id}/review`,
+                    pathname: `/game/review/${game.id}`,
                     state: { chosenGame: game }
                 }}>Review Game</Link>
 
