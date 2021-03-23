@@ -12,7 +12,7 @@ export const PastGameCard = ({ game }) => {
         <div className="game__description">Who won? {game.won ? "YOU!" : "Not you, unfortunately."}</div>
         <Link to={{
                     pathname: `/game/review/${game.id}`,
-                    state: { chosenGame: game }
+                    props: { game }
                 }}>Review Game</Link>
 
     </section>
