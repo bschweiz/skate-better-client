@@ -9,6 +9,7 @@ import "./GameTrickCard.css"
 
 export const PastGameTrickCard = ({ gametrick, props }) => {
         const { getAvailableTricksByGame, availableTricks } = useContext(TrickContext)
+        const { updateGameTrick } = useContext(GameTrickContext)
 
 
 
@@ -20,7 +21,7 @@ export const PastGameTrickCard = ({ gametrick, props }) => {
         })
 
         useEffect(() => {
-                getAvailableTricksByGame()
+                getAvailableTricksByGame(gametrick.game)
         }, [])
 
         const changeCurrentTrick = (DOMEvent) => {
@@ -62,16 +63,15 @@ export const PastGameTrickCard = ({ gametrick, props }) => {
                                                 <button onClick={evt => {
 
                                                         const editedGameTrick = {
+                                                                id: gametrick.id,
+                                                                gameId: gametrick.game,
                                                                 trickId: chosenGameTrick.trickId,
                                                                 userMake: gametrick.user_make,
                                                                 opponentMake: gametrick.opponent_make
                                                         }
-                                                        console.log(evt)
-                                                        createGameTrick(editedGameTrick)
-                                                                .then(setTrickLandedState({
-                                                                        userMake: 0,
-                                                                        opponentMake: 0,
-                                                                }))
+                                                        console.log(editedGameTrick)
+                                                        updateGameTrick(editedGameTrick)
+
                                                 }}
                                                 >select new trick</button>
                                                 <button onClick={() => {

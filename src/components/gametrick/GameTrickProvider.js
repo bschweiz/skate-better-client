@@ -56,14 +56,28 @@ export const GameTrickProvider = (props) => {
             .then(response => response.json())
             .then(getGameTricksByNewestGame)
             // .then(getCurrentGame)
-            // .then(getCurrentlyAvailableTricks)
+            .then(getCurrentlyAvailableTricks)
+    }
+    
+    const updateGameTrick = (editedGameTrick) => {
+        return fetch(`http://localhost:8000/gametricks/${editedGameTrick.id}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("sb_token")}`
+            },
+            body: JSON.stringify(editedGameTrick)
+        })
+            .then(response => response.json())
+            .then(getGameTricksByGame(editedGameTrick.gameId))
+    
     }
 
     return (
         <GameTrickContext.Provider value={{
             allGameTricks, theseGameTricks, gameTricksByGame,
             getAllGameTricks, getGameTricksByNewestGame, getGameTricksByGame,
-            createGameTrick
+            createGameTrick, updateGameTrick
         }}>
             {props.children}
         </GameTrickContext.Provider>
