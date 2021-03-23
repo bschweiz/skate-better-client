@@ -12,15 +12,24 @@ export const PastGameTrickCard = ({ gametrick, props }) => {
 
 
 
+        
+        const [editMode, setEditMode] = useState(false)
+        
         const [chosenGameTrick, setChosenGameTrick] = useState({
                 trickId: 0,
         })
 
-        const [editMode, setEditMode] = useState(false)
-
         useEffect(() => {
                 getAvailableTricksByGame()
         }, [])
+
+        const changeCurrentTrick = (DOMEvent) => {
+                const newTrickState = Object.assign({}, chosenGameTrick)
+        
+                newTrickState[DOMEvent.target.name] = DOMEvent.target.value
+                console.log(newTrickState)
+                setChosenGameTrick(newTrickState)
+        }
 
         return (
                 <section className="trick_info">
@@ -36,13 +45,16 @@ export const PastGameTrickCard = ({ gametrick, props }) => {
                                 onClick={() => {
                                         setEditMode(true)
                                         console.log(gametrick)
-                                }}>change trick</button>
+                                }}>change trick selection</button>
                         { editMode ?
                                 <fieldset>
                                         <div className="form-group">
 
                                                 <select className="form-control" type="text" name="trickId" autoFocus
-                                                        onChange={console.log(availableTricks)}
+                                                        onChange={evt => {
+                                                                console.log(evt)
+                                                                changeCurrentTrick(evt)}
+                                                                }
                                                 >
                                                         <option value='0'>Available Tricks</option>
                                                         {availableTricks.map(tr => (

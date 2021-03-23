@@ -28,7 +28,7 @@ export const GamePlay = (props) => {
             console.log('someone won this game!')
             props.history.push({ pathname: "/game/over", game: currentGame })
         } else {console.log('current game: ', currentGame)}
-    }, [currentGame.user_score, currentGame.opponent_score])
+    }, [currentGame])
 
     const changeCurrentTrick = (DOMEvent) => {
         const newTrickState = Object.assign({}, currentTrick)
