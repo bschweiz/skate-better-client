@@ -37,7 +37,7 @@ export const GamePlayReview = (props) => {
             {<OpponentScore key={gt.id} gametrick={gt} props={props}></OpponentScore>} */}
             <p>YOU (): {chosenGame.user_score}     THEM (): {chosenGame.opponent_score}</p>
 
-            <h2>Game in Progress:</h2>
+            <h2>Tricks of the Game:</h2>
             <div className="tricks"> <h3>Completed GameTricks List:</h3>
 
                 {
