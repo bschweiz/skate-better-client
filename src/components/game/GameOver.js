@@ -14,13 +14,18 @@ export const GameOver = (props) => {
             {<OpponentScore key={gt.id} gametrick={gt} props={props}></OpponentScore>} */}
             <p>YOU (): {props.location.game.user_score}     THEM (): {props.location.game.opponent_score}</p>
             <section>
-                <button>Rematch</button>
+                <button className="nav-link"
+                    onClick={() => {
+                        rematchGame()
+                        props.history.push({ pathname: "/game/new" })}
+                    }>Rematch</button>
+
                 <button className="nav-link"
                     onClick={() => {
                         props.history.push({pathname: `/game/review/${props.location.game.id}`, 
                                             game: props.location.game})
-                    }}
-                >Review This Game</button>
+                    }}>Review This Game</button>
+
                 <button className="nav-link"
                     onClick={() => {
                         props.history.push({ pathname: "/" })
