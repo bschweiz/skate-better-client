@@ -35,21 +35,6 @@ export const GamePlayReview = (props) => {
             {/* {<UserScore key={gt.id} gametrick={gt} props={props}></UserScore>}
             {<OpponentScore key={gt.id} gametrick={gt} props={props}></OpponentScore>} */}
             <p>YOU (): {chosenGame.user_score}     THEM (): {chosenGame.opponent_score}</p>
-            <h2>Which trick? (Available Tricks)</h2>
-            { availableTricks ?
-                <fieldset>
-                    <div className="form-group">
-
-                        <select className="form-control" type="text" name="trickId" autoFocus
-                            onChange={changeCurrentTrick}
-                        >
-                            <option value='0'>Available Tricks</option>
-                            {availableTricks.map(tr => (
-                                <option key={tr.id} value={tr.id}>{tr.name}</option>
-                            ))}
-                        </select>
-                    </div>
-                </fieldset> : <div></div>}
 
             <h2>Game in Progress:</h2>
             <div className="tricks"> <h3>Completed GameTricks List:</h3>
