@@ -17,7 +17,7 @@ export const OpponentSelect = (props) => {
 
     const [newOpponent, setNewOpponent] = useState({
         handle: 'annonymous',
-        goofy: null,
+        goofy: 0,
     })
 
     const [gameDetails, setGameDetails] = useState({
@@ -88,8 +88,8 @@ export const OpponentSelect = (props) => {
 
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="goofyStatus">Goofy-footed?  </label>
-                    <select className="form-control" type="text" name="goofy" autoFocus
+                    <label htmlFor="goofyStatus">Stance: </label>
+                    <select className="form-control" type="text" name="goofy" autoFocus required
                         onChange={changeNewOpponentState}>
 
                         <option value={0}>Regular</option>

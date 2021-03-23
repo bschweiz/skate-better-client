@@ -21,6 +21,14 @@ export const GamePlay = (props) => {
         getCurrentlyAvailableTricks()
         getCurrentGame()
     }, [])
+    
+    useEffect(() => {
+        
+        if (currentGame.user_score >= 5 || currentGame.opponent_score >= 5) {
+            console.log('someone won this game!')
+            props.history.push({ pathname: "/game/over", game: currentGame })
+        } else {console.log('current game: ', currentGame)}
+    }, [currentGame])
 
     const changeCurrentTrick = (DOMEvent) => {
         const newTrickState = Object.assign({}, currentTrick)

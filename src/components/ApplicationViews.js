@@ -12,6 +12,7 @@ import { GameTrickProvider } from "./gametrick/GameTrickProvider"
 import { GamePlay } from "./game/GamePlay"
 import { PastGameList } from "./game/PastGameList"
 import { GamePlayReview } from "./game/GamePlayReview"
+import { GameOver } from "./game/GameOver"
 
 
 export const ApplicationViews = (props) => {
@@ -32,6 +33,10 @@ export const ApplicationViews = (props) => {
                                 </Route>
                                 <Route exact path='/game/new' render={
                                     props => <GamePlay {...props} />
+                                }>
+                                </Route>
+                                <Route exact path='/game/over' render={
+                                    props => <GameOver {...props} />
                                 }>
                                 </Route>
                                 <Route exact path='/game/review' render={
