@@ -59,6 +59,11 @@ export const GamePlayReview = (props) => {
             <section>
                 <button className="nav-link"
                     onClick={() => {
+                        deletGame(chosenGame.id)
+                        props.history.push({ pathname: "/" })
+                    }}>Delete This Game</button>
+                <button className="nav-link"
+                    onClick={() => {
                         props.history.push({ pathname: "/" })
                     }}>Home</button>
             </section>

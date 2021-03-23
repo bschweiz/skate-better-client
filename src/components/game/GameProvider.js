@@ -79,11 +79,22 @@ export const GameProvider = (props) => {
             .then(getAllGames)
     }
 
+    const deleteGame = (gameId) => {
+        return fetch(`http://localhost:8000/game/${gameId}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("sb_token")}`
+            }
+        })
+        .then(getAllGames)
+    }
+
     return (
         <GameContext.Provider value={{
             allGames, currentGame, chosenGame, newestGameId, 
             getAllGames, getCurrentGame, getGameById, 
-            createGame, createNewOpponentGame, updateGame
+            createGame, createNewOpponentGame, updateGame,
+            deleteGame
         }}>
             {props.children}
         </GameContext.Provider>
