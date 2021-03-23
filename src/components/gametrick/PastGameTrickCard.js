@@ -12,9 +12,9 @@ export const PastGameTrickCard = ({ gametrick, props }) => {
 
 
 
-        
+
         const [editMode, setEditMode] = useState(false)
-        
+
         const [chosenGameTrick, setChosenGameTrick] = useState({
                 trickId: 0,
         })
@@ -25,7 +25,7 @@ export const PastGameTrickCard = ({ gametrick, props }) => {
 
         const changeCurrentTrick = (DOMEvent) => {
                 const newTrickState = Object.assign({}, chosenGameTrick)
-        
+
                 newTrickState[DOMEvent.target.name] = DOMEvent.target.value
                 console.log(newTrickState)
                 setChosenGameTrick(newTrickState)
@@ -52,18 +52,21 @@ export const PastGameTrickCard = ({ gametrick, props }) => {
 
                                                 <select className="form-control" type="text" name="trickId" autoFocus
                                                         onChange={evt => {
-                                                                console.log(evt)
-                                                                changeCurrentTrick(evt)}
-                                                                }
-                                                >
+                                                                changeCurrentTrick(evt)
+                                                        }}>
                                                         <option value='0'>Available Tricks</option>
                                                         {availableTricks.map(tr => (
                                                                 <option key={tr.id} value={tr.id}>{tr.name}</option>
                                                         ))}
                                                 </select>
+                                                <button>select new trick</button>
+                                                <button onClick={() => {
+                                                        setEditMode(false)
+                                                }}>cancel</button>
                                         </div>
-                                </fieldset> : <div></div>}
-                </section>
+                                </fieldset> : <div></div>
+                        }
+                </section >
         )
 
 }

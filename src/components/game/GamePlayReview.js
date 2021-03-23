@@ -47,15 +47,6 @@ export const GamePlayReview = (props) => {
                 }
             </div>
 
-            <h3>Current Trick (in progress, mutable): </h3>
-            {  currentTrick.trickId ?
-                <TrickCard key={currentTrick.id}
-                    trick={availableTricks.find(t => t.id == [currentTrick.trickId])}
-                    gameId={chosenGame.id}
-                    props={props}
-                />
-                : <></>
-            }
             <section>
                 <button className="nav-link"
                     onClick={() => {
