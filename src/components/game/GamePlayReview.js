@@ -37,7 +37,8 @@ export const GamePlayReview = (props) => {
                         return (
                             <>
                                 <PastGameTrickCard key={gt.id} gametrick={gt} props={props} />
-                                <PastGameControls key={gt.id} gametrick={gt} props={props} />
+                                <PastGameControls key={gt.id} gametrick={gt} props={props} 
+                                                    availableTricks={availableTricks}/>
                                 
                             </>
                         )
@@ -46,12 +47,16 @@ export const GamePlayReview = (props) => {
             </div>
 
             <section>
-                <button className="nav-link"
+                <button className="delte-game"
                     onClick={() => {
                         deleteGame(chosenGame.id)
-                        props.history.push({ pathname: "/" })
+                        props.history.push({ pathname: "/game/review" })
                     }}>Delete This Game</button>
-                <button className="nav-link"
+                <button className="nav-link-back"
+                    onClick={() => {
+                        props.history.push({ pathname: "/game/review" })
+                    }}>Back to Past Games</button>
+                <button className="nav-link-home"
                     onClick={() => {
                         props.history.push({ pathname: "/" })
                     }}>Home</button>

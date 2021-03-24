@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { GameTrickContext } from "../gametrick/GameTrickProvider"
+import { GameContext } from "../game/GameProvider"
 import "./TrickCard.css"
 
 
@@ -8,6 +9,7 @@ import "./TrickCard.css"
 export const TrickCard = ({ trick, gameId, props }) => {
 
     const { createGameTrick } = useContext(GameTrickContext)
+    const { getCurrentGame } = useContext(GameContext)
 
     const [trickLandedState, setTrickLandedState] = useState({
         userMake: 0,
@@ -64,6 +66,7 @@ export const TrickCard = ({ trick, gameId, props }) => {
                             userMake: 0,
                             opponentMake: 0,
                         }))
+                        .then(getCurrentGame)
                 }}
                 >log trick</button>
         </section> : <></>

@@ -68,7 +68,7 @@ export const GameTrickProvider = (props) => {
             },
             body: JSON.stringify(editedGameTrick)
         })
-            .then(getAllGameTricks)
+            .then(getGameTricksByGame(editedGameTrick.gameId))
     
     }
 
