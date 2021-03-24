@@ -8,22 +8,15 @@ import "./GameTrickCard.css"
 
 
 export const PastGameTrickCard = ({ gametrick, props }) => {
-        const { getAvailableTricksByGame, availableTricks } = useContext(TrickContext)
+        
         const { updateGameTrick, getGameTricksByGame, allGameTricks } = useContext(GameTrickContext)
 
-
-
-
-        const [editMode, setEditMode] = useState(false)
 
         const [chosenGameTrick, setChosenGameTrick] = useState({
                 trickId: 0,
         })
 
-        useEffect(() => {
-                getAvailableTricksByGame(gametrick.game)
-        }, [allGameTricks])
-
+        
         const changeCurrentTrick = (DOMEvent) => {
                 const newTrickState = Object.assign({}, chosenGameTrick)
 

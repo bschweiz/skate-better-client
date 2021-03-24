@@ -7,9 +7,9 @@ import { PastGameTrickCard } from "../gametrick/PastGameTrickCard"
 
 
 export const GamePlayReview = (props) => {
-
+    const { getAvailableTricksByGame, availableTricks } = useContext(TrickContext)
     const { getGameById, chosenGame, deleteGame } = useContext(GameContext)
-    const { getGameTricksByGame, gameTricksByGame } = useContext(GameTrickContext)
+    const { getGameTricksByGame, gameTricksByGame, updateGameTrick } = useContext(GameTrickContext)
 
     useEffect(() => {
         console.log(props)
@@ -18,6 +18,12 @@ export const GamePlayReview = (props) => {
     }, [])
 
     const [editMode, setEditMode] = useState(false)
+
+    useEffect(() => {
+        getAvailableTricksByGame(gametrick.game)
+}, [allGameTricks])
+
+
     return (
         <>
             <h1>REVIEW YOUR GAME!</h1>
@@ -36,8 +42,9 @@ export const GamePlayReview = (props) => {
                                 <button className="edit_trick"
                                     onClick={() => {
                                         setEditMode(true)
-                                        console.log('gametrick: ', gametrick)
+                                        console.log('gametrick: ', gt)
                                     }}>change trick selection</button>
+
                                 {editMode ?
                                     <fieldset>
                                         <div className="form-group">
@@ -54,16 +61,16 @@ export const GamePlayReview = (props) => {
                                             <button onClick={evt => {
 
                                                 const editedGameTrick = {
-                                                    id: gametrick.id,
-                                                    gameId: gametrick.game,
+                                                    id: gt.id,
+                                                    gameId: gt.game,
                                                     trickId: chosenGameTrick.trickId,
-                                                    userMake: gametrick.user_make,
-                                                    opponentMake: gametrick.opponent_make
+                                                    userMake: gt.user_make,
+                                                    opponentMake: gt.opponent_make
                                                 }
                                                 console.log(editedGameTrick)
                                                 updateGameTrick(editedGameTrick)
                                                     .then(setEditMode(false))
-                                                    .then(getGameTricksByGame(gametrick.game))
+                                                    .then(getGameTricksByGame(gt.game))
                                             }}
                                             >select new trick</button>
                                             <button onClick={() => {
