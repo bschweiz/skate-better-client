@@ -9,18 +9,18 @@ import { PastGameControls } from "./PastGameControls"
 export const GamePlayReview = (props) => {
     const { getAvailableTricksByGame, availableTricks } = useContext(TrickContext)
     const { getGameById, chosenGame, deleteGame } = useContext(GameContext)
-    const { getGameTricksByGame, gameTricksByGame, updateGameTrick, allGameTricks } = useContext(GameTrickContext)
+    const { getGameTricksByGame, gameTricksByGame, allGameTricks } = useContext(GameTrickContext)
 
     useEffect(() => {
-        // console.log(props)
-        getAvailableTricksByGame(props.location.game.id)
-        getGameTricksByGame(props.location.game.id)
-        getGameById(props.location.game.id)
+        console.log(props)
+        getAvailableTricksByGame(props.match.params.gameId)
+        getGameTricksByGame(props.match.params.gameId)
+        getGameById(props.match.params.gameId)
     }, [])
 
-    // useEffect(() => {
-    //     getAvailableTricksByGame(props.location.game.id)
-    // }, [allGameTricks])
+    useEffect(() => {
+        getAvailableTricksByGame(props.match.params.gameId)
+    }, [allGameTricks])
 
     return (
         <>

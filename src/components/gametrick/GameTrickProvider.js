@@ -10,7 +10,7 @@ export const GameTrickProvider = (props) => {
     const { getCurrentGame } = useContext(GameContext)
 
     const [allGameTricks, setAllGameTricks] = useState([])
-    const [theseGameTricks, setTheseGameTricks] = useState([])
+    const [newestGameGameTricks, setNewestGameTricks] = useState([])
     const [gameTricksByGame, setGameTricksByGame] = useState([])
 
     const getAllGameTricks = () => {
@@ -41,7 +41,7 @@ export const GameTrickProvider = (props) => {
             }
         })
             .then(response => response.json())
-            .then(setTheseGameTricks)
+            .then(setNewestGameTricks)
     }
 
     const createGameTrick = (gametrickDetails) => {
@@ -68,13 +68,13 @@ export const GameTrickProvider = (props) => {
             },
             body: JSON.stringify(editedGameTrick)
         })
-            .then(getGameTricksByGame(editedGameTrick.gameId))
+            .then(getAllGameTricks)
     
     }
 
     return (
         <GameTrickContext.Provider value={{
-            allGameTricks, theseGameTricks, gameTricksByGame,
+            allGameTricks, newestGameGameTricks, gameTricksByGame,
             getAllGameTricks, getGameTricksByNewestGame, getGameTricksByGame,
             createGameTrick, updateGameTrick
         }}>

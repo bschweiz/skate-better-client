@@ -10,7 +10,7 @@ export const GamePlay = (props) => {
     
     const { newestGameId, getCurrentGame, currentGame } = useContext(GameContext)
     const { getCurrentlyAvailableTricks, availableTricks } = useContext(TrickContext)
-    const { getGameTricksByNewestGame, theseGameTricks } = useContext(GameTrickContext)
+    const { getGameTricksByNewestGame, newestGameGameTricks } = useContext(GameTrickContext)
 
     const [currentTrick, setCurrentTrick] = useState({
         trickId: 0,
@@ -64,7 +64,7 @@ export const GamePlay = (props) => {
             <div className="tricks"> <h3>Completed GameTricks List:</h3>
 
                 {
-                    theseGameTricks.map(gt => {
+                    newestGameGameTricks.map(gt => {
                         return <GameTrickCard key={gt.id} gametrick={gt} props={props} />
                     })
                 }
