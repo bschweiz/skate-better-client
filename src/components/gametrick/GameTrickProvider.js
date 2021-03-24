@@ -10,7 +10,7 @@ export const GameTrickProvider = (props) => {
     const { getCurrentGame } = useContext(GameContext)
 
     const [allGameTricks, setAllGameTricks] = useState([])
-    const [theseGameTricks, setTheseGameTricks] = useState([])
+    const [newestGameGameTricks, setNewestGameTricks] = useState([])
     const [gameTricksByGame, setGameTricksByGame] = useState([])
 
     const getAllGameTricks = () => {
@@ -41,7 +41,7 @@ export const GameTrickProvider = (props) => {
             }
         })
             .then(response => response.json())
-            .then(setTheseGameTricks)
+            .then(setNewestGameTricks)
     }
 
     const createGameTrick = (gametrickDetails) => {
@@ -55,15 +55,29 @@ export const GameTrickProvider = (props) => {
         })
             .then(response => response.json())
             .then(getGameTricksByNewestGame)
-            .then(getCurrentGame)
+            // .then(getCurrentGame)
             .then(getCurrentlyAvailableTricks)
+    }
+    
+    const updateGameTrick = (editedGameTrick) => {
+        return fetch(`http://localhost:8000/gametricks/${editedGameTrick.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("sb_token")}`
+            },
+            body: JSON.stringify(editedGameTrick)
+        })
+            .then(getGameTricksByGame(editedGameTrick.gameId))
+            .then(getAllGameTricks)
+    
     }
 
     return (
         <GameTrickContext.Provider value={{
-            allGameTricks, theseGameTricks, gameTricksByGame,
+            allGameTricks, newestGameGameTricks, gameTricksByGame,
             getAllGameTricks, getGameTricksByNewestGame, getGameTricksByGame,
-            createGameTrick
+            createGameTrick, updateGameTrick
         }}>
             {props.children}
         </GameTrickContext.Provider>

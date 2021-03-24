@@ -27,10 +27,21 @@ export const TrickProvider = (props) => {
             .then(response => response.json())
             .then(setAvailableTricks)
     }
+    
+    const getAvailableTricksByGame = (gameId) => {
+        return fetch(`http://localhost:8000/tricks?gameId=${gameId}`, {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("sb_token")}`
+            }
+        })
+            .then(response => response.json())
+            .then(setAvailableTricks)
+    }
 
     return (
         <TrickContext.Provider value={{
-            allTricks, availableTricks, getAllTricks, getCurrentlyAvailableTricks
+            allTricks, availableTricks, getAllTricks, getCurrentlyAvailableTricks,
+            getAvailableTricksByGame
         }}>
             {props.children}
         </TrickContext.Provider>

@@ -54,6 +54,19 @@ export const GameProvider = (props) => {
             .then(getAllGames)
     }
     
+    const rematchGame = () => {
+        return fetch("http://localhost:8000/game/rematch", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${localStorage.getItem("sb_token")}`
+            },
+            body: JSON.stringify()
+        })
+            .then(response => response.json())
+            .then(getCurrentGame)
+    }
+    
     const createNewOpponentGame = (newOpponentGame) => {
         return fetch("http://localhost:8000/game/addnewopponent", {
             method: "POST",
@@ -79,11 +92,22 @@ export const GameProvider = (props) => {
             .then(getAllGames)
     }
 
+    const deleteGame = (gameId) => {
+        return fetch(`http://localhost:8000/game/${gameId}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("sb_token")}`
+            }
+        })
+        .then(getAllGames)
+    }
+
     return (
         <GameContext.Provider value={{
             allGames, currentGame, chosenGame, newestGameId, 
             getAllGames, getCurrentGame, getGameById, 
-            createGame, createNewOpponentGame, updateGame
+            createGame, createNewOpponentGame, updateGame,
+            deleteGame, rematchGame
         }}>
             {props.children}
         </GameContext.Provider>

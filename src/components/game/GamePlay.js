@@ -10,17 +10,25 @@ export const GamePlay = (props) => {
     
     const { newestGameId, getCurrentGame, currentGame } = useContext(GameContext)
     const { getCurrentlyAvailableTricks, availableTricks } = useContext(TrickContext)
-    const { getGameTricksByNewestGame, theseGameTricks } = useContext(GameTrickContext)
+    const { getGameTricksByNewestGame, newestGameGameTricks } = useContext(GameTrickContext)
 
     const [currentTrick, setCurrentTrick] = useState({
         trickId: 0,
     })
-
+// debugger
     useEffect(() => {
         getGameTricksByNewestGame()
         getCurrentlyAvailableTricks()
         getCurrentGame()
     }, [])
+    
+    useEffect(() => {
+        
+        if (currentGame.user_score >= 5 || currentGame.opponent_score >= 5) {
+            console.log('someone won this game!')
+            props.history.push({ pathname: "/game/over", game: currentGame })
+        } else {console.log('current game: ', currentGame)}
+    }, [currentGame])
 
     const changeCurrentTrick = (DOMEvent) => {
         const newTrickState = Object.assign({}, currentTrick)
@@ -56,7 +64,7 @@ export const GamePlay = (props) => {
             <div className="tricks"> <h3>Completed GameTricks List:</h3>
 
                 {
-                    theseGameTricks.map(gt => {
+                    newestGameGameTricks.map(gt => {
                         return <GameTrickCard key={gt.id} gametrick={gt} props={props} />
                     })
                 }
@@ -66,7 +74,7 @@ export const GamePlay = (props) => {
             {  currentTrick.trickId ?
                 <TrickCard key={currentTrick.id}
                     trick={availableTricks.find(t => t.id == [currentTrick.trickId])}
-                    gameId={newestGameId}
+                    gameId={currentGame.id}
                     props={props}
                 />
                 : <></>

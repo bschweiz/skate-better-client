@@ -2,62 +2,68 @@ import React, { useContext, useEffect, useState } from 'react'
 import { GameContext } from "./GameProvider"
 import { GameTrickContext } from "../gametrick/GameTrickProvider"
 import { TrickContext } from "../trick/TrickProvider"
-import { TrickCard } from "../trick/TrickCard"
-import { GameTrickCard } from "../gametrick/GameTrickCard"
+import { PastGameTrickCard } from "../gametrick/PastGameTrickCard"
+import { PastGameControls } from "./PastGameControls"
 
 
 export const GamePlayReview = (props) => {
-    const { newestGameId, getGameById, chosenGame } = useContext(GameContext)
-    const { getCurrentlyAvailableTricks, availableTricks } = useContext(TrickContext)
-    const { getGameTricksByGame, gameTricksByGame } = useContext(GameTrickContext)
+    const { getAvailableTricksByGame, availableTricks } = useContext(TrickContext)
+    const { getGameById, chosenGame, deleteGame } = useContext(GameContext)
+    const { getGameTricksByGame, gameTricksByGame, allGameTricks } = useContext(GameTrickContext)
+    
+    const [theseGameTricks, setTheseGameTricks] = useState([])
 
-    const [currentTrick, setCurrentTrick] = useState({
-        trickId: 0,
-    })
-// debugger
     useEffect(() => {
         console.log(props)
-        getGameTricksByGame(props.location.props.game.id)
-        getCurrentlyAvailableTricks()
-        getGameById(props.location.props.game.id)
+        getAvailableTricksByGame(props.match.params.gameId)
+        getGameTricksByGame(props.match.params.gameId)
+        getGameById(props.match.params.gameId)
     }, [])
 
-    const changeCurrentTrick = (DOMEvent) => {
-        const newTrickState = Object.assign({}, currentTrick)
+    useEffect(() => {
+        getAvailableTricksByGame(props.match.params.gameId)
+    }, [allGameTricks])
+    
+    useEffect(() => {
+        setTheseGameTricks(gameTricksByGame)
+    }, [gameTricksByGame])
 
-        newTrickState[DOMEvent.target.name] = DOMEvent.target.value
-        console.log(newTrickState)
-        setCurrentTrick(newTrickState)
-    }
 
     return (
         <>
             <h1>REVIEW YOUR GAME!</h1>
             {/* {<UserScore key={gt.id} gametrick={gt} props={props}></UserScore>}
             {<OpponentScore key={gt.id} gametrick={gt} props={props}></OpponentScore>} */}
-            <p>YOU (): {chosenGame.user_score}     THEM (): {chosenGame.opponent_score}</p>
+            <p>YOU: {chosenGame.user_score}     THEM: {chosenGame.opponent_score}</p>
 
-            <h2>Game in Progress:</h2>
+            <h2>Tricks of the Game:</h2>
             <div className="tricks"> <h3>Completed GameTricks List:</h3>
 
                 {
-                    gameTricksByGame.map(gt => {
-                        return <GameTrickCard key={gt.id} gametrick={gt} props={props} />
+                    theseGameTricks.map(gt => {
+                        return (
+                            <>
+                                <PastGameTrickCard key={"gametrick-"+gt.id} gametrick={gt} props={props} />
+                                <PastGameControls key={"gametrick-controls-"+gt.id} gametrick={gt} props={props} 
+                                                    availableTricks={availableTricks}/>
+                                
+                            </>
+                        )
                     })
                 }
             </div>
 
-            <h3>Current Trick (in progress, mutable): </h3>
-            {  currentTrick.trickId ?
-                <TrickCard key={currentTrick.id}
-                    trick={availableTricks.find(t => t.id == [currentTrick.trickId])}
-                    gameId={newestGameId}
-                    props={props}
-                />
-                : <></>
-            }
             <section>
-                <button className="nav-link"
+                <button className="delte-game"
+                    onClick={() => {
+                        deleteGame(chosenGame.id)
+                        props.history.push({ pathname: "/game/review" })
+                    }}>Delete This Game</button>
+                <button className="nav-link-back"
+                    onClick={() => {
+                        props.history.push({ pathname: "/game/review" })
+                    }}>Back to Past Games</button>
+                <button className="nav-link-home"
                     onClick={() => {
                         props.history.push({ pathname: "/" })
                     }}>Home</button>
