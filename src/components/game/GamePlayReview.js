@@ -17,6 +17,7 @@ export const GamePlayReview = (props) => {
         getGameById(props.location.game.id)
     }, [])
 
+    const [editMode, setEditMode] = useState(false)
     return (
         <>
             <h1>REVIEW YOUR GAME!</h1>
@@ -29,7 +30,50 @@ export const GamePlayReview = (props) => {
 
                 {
                     gameTricksByGame.map(gt => {
-                        return <PastGameTrickCard key={gt.id} gametrick={gt} props={props} />
+                        return (
+                            <>
+                                <PastGameTrickCard key={gt.id} gametrick={gt} props={props} />
+                                <button className="edit_trick"
+                                    onClick={() => {
+                                        setEditMode(true)
+                                        console.log('gametrick: ', gametrick)
+                                    }}>change trick selection</button>
+                                {editMode ?
+                                    <fieldset>
+                                        <div className="form-group">
+
+                                            <select className="form-control" type="text" name="trickId" autoFocus
+                                                onChange={evt => {
+                                                    changeCurrentTrick(evt)
+                                                }}>
+                                                <option value='0'>Available Tricks</option>
+                                                {availableTricks.map(tr => (
+                                                    <option key={tr.id} value={tr.id}>{tr.name}</option>
+                                                ))}
+                                            </select>
+                                            <button onClick={evt => {
+
+                                                const editedGameTrick = {
+                                                    id: gametrick.id,
+                                                    gameId: gametrick.game,
+                                                    trickId: chosenGameTrick.trickId,
+                                                    userMake: gametrick.user_make,
+                                                    opponentMake: gametrick.opponent_make
+                                                }
+                                                console.log(editedGameTrick)
+                                                updateGameTrick(editedGameTrick)
+                                                    .then(setEditMode(false))
+                                                    .then(getGameTricksByGame(gametrick.game))
+                                            }}
+                                            >select new trick</button>
+                                            <button onClick={() => {
+                                                setEditMode(false)
+                                            }}>cancel</button>
+                                        </div>
+                                    </fieldset> : <div></div>
+                                }
+                            </>
+                        )
                     })
                 }
             </div>

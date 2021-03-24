@@ -42,45 +42,8 @@ export const PastGameTrickCard = ({ gametrick, props }) => {
                         <input type="checkbox" key={"opponent-make" + gametrick.id} name="checkbox" checked=
                                 {gametrick.opponent_make ? "checked" : ""}
                         />
-                        <button className="edit_trick"
-                                onClick={() => {
-                                        setEditMode(true)
-                                        console.log('gametrick: ', gametrick)
-                                }}>change trick selection</button>
-                        { editMode ?
-                                <fieldset>
-                                        <div className="form-group">
-
-                                                <select className="form-control" type="text" name="trickId" autoFocus
-                                                        onChange={evt => {
-                                                                changeCurrentTrick(evt)
-                                                        }}>
-                                                        <option value='0'>Available Tricks</option>
-                                                        {availableTricks.map(tr => (
-                                                                <option key={tr.id} value={tr.id}>{tr.name}</option>
-                                                        ))}
-                                                </select>
-                                                <button onClick={evt => {
-
-                                                        const editedGameTrick = {
-                                                                id: gametrick.id,
-                                                                gameId: gametrick.game,
-                                                                trickId: chosenGameTrick.trickId,
-                                                                userMake: gametrick.user_make,
-                                                                opponentMake: gametrick.opponent_make
-                                                        }
-                                                        console.log(editedGameTrick)
-                                                        updateGameTrick(editedGameTrick)
-                                                        .then(setEditMode(false))
-                                                }}
-                                                >select new trick</button>
-                                                <button onClick={() => {
-                                                        setEditMode(false)
-                                                }}>cancel</button>
-                                        </div>
-                                </fieldset> : <div></div>
-                        }
-                </section >
+                        
+                </section>
         )
 
 }
