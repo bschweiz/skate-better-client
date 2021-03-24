@@ -18,9 +18,9 @@ export const GamePlayReview = (props) => {
         getGameById(props.location.game.id)
     }, [])
 
-    useEffect(() => {
-        getAvailableTricksByGame(props.location.game.id)
-    }, [allGameTricks])
+    // useEffect(() => {
+    //     getAvailableTricksByGame(props.location.game.id)
+    // }, [allGameTricks])
 
     return (
         <>
