@@ -8,7 +8,6 @@ export const GameProvider = (props) => {
     const [allGames, setAllGames] = useState([])
     const [currentGame, setCurrentGame] = useState([])
     const [chosenGame, setChosenGame] = useState([])
-    const [newestGameId, setNewestGameId] = useState([])
 
     const getAllGames = () => {
         return fetch("http://localhost:8000/game", {
@@ -50,7 +49,8 @@ export const GameProvider = (props) => {
             body: JSON.stringify(gameDetails)
         })
             .then(response => response.json())
-            .then(data => setNewestGameId(data.id))
+            .then(() => setCurrentGame([]))
+            .then(getCurrentGame)
             .then(getAllGames)
     }
     
@@ -104,7 +104,7 @@ export const GameProvider = (props) => {
 
     return (
         <GameContext.Provider value={{
-            allGames, currentGame, chosenGame, newestGameId, 
+            allGames, currentGame, chosenGame,  
             getAllGames, getCurrentGame, getGameById, 
             createGame, createNewOpponentGame, updateGame,
             deleteGame, rematchGame

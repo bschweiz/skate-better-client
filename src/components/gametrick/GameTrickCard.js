@@ -24,6 +24,7 @@ export const GameTrickCard = ({ gametrick, props }) => {
                         <input type="checkbox" key={"opponent-make" + gametrick.id} name="checkbox" checked=
                                 {gametrick.opponent_make ? "checked" : ""}
                         />
+
                 </section>
         )
 

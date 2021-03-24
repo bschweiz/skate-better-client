@@ -58,7 +58,7 @@ export const GameTrickProvider = (props) => {
             // .then(getCurrentGame)
             .then(getCurrentlyAvailableTricks)
     }
-    
+
     const updateGameTrick = (editedGameTrick) => {
         return fetch(`http://localhost:8000/gametricks/${editedGameTrick.id}`, {
             method: "PUT",
@@ -68,10 +68,10 @@ export const GameTrickProvider = (props) => {
             },
             body: JSON.stringify(editedGameTrick)
         })
-            .then(getGameTricksByGame(editedGameTrick.gameId))
-            
+            // .then(getGameTricksByGame(editedGameTrick.gameId))
             .then(getAllGameTricks)
-    
+
+
     }
 
     return (

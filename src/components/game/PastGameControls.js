@@ -9,8 +9,6 @@ import { GameContext } from "./GameProvider"
 
 export const PastGameControls = ({ gametrick, index, availableTricks }) => {
 
-
-    const { getGameById, chosenGame, deleteGame } = useContext(GameContext)
     const { getGameTricksByGame, gameTricksByGame, updateGameTrick, allGameTricks } = useContext(GameTrickContext)
 
     const [editMode, setEditMode] = useState(false)
@@ -23,7 +21,7 @@ export const PastGameControls = ({ gametrick, index, availableTricks }) => {
         const newTrickState = Object.assign({}, chosenGameTrick)
 
         newTrickState[DOMEvent.target.name] = DOMEvent.target.value
-        console.log(newTrickState)
+        // console.log(newTrickState)
         setChosenGameTrick(newTrickState)
     }
 
@@ -60,8 +58,8 @@ export const PastGameControls = ({ gametrick, index, availableTricks }) => {
                         }
                         console.log(editedGameTrick)
                         updateGameTrick(editedGameTrick)
-                            .then(setEditMode(false))
-                            .then(getGameTricksByGame(gametrick.game))
+                            .then(() => setEditMode(false))
+                            .then(() => getGameTricksByGame(gametrick.game))
                     }}
                     >select new trick</button>
                     <button onClick={() => {
