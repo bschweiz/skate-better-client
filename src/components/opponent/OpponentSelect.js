@@ -117,7 +117,7 @@ export const OpponentSelect = (props) => {
                         const fullGameDetails = Object.assign({}, gameDetails)
                         fullGameDetails['location'] = thisLocation.location
                         createGame(fullGameDetails)
-                        history.push({ pathname: "/game/new" })
+                        .then(() => history.push({ pathname: "/game/new" }))
                     }
                     
                     else  
@@ -130,7 +130,7 @@ export const OpponentSelect = (props) => {
                     const newOpponentGame = Object.assign({}, newOpponent)
                     newOpponentGame['location'] = thisLocation.location
                     createNewOpponentGame(newOpponentGame)
-                    history.push({ pathname: "/game/new" })}
+                    .then(() => history.push({ pathname: "/game/new" }))}
 
                     }
                 }
