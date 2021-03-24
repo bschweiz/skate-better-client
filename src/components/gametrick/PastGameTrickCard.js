@@ -9,7 +9,7 @@ import "./GameTrickCard.css"
 
 export const PastGameTrickCard = ({ gametrick, props }) => {
         const { getAvailableTricksByGame, availableTricks } = useContext(TrickContext)
-        const { updateGameTrick } = useContext(GameTrickContext)
+        const { updateGameTrick, getGameTricksByGame, allGameTricks } = useContext(GameTrickContext)
 
 
 
@@ -22,7 +22,7 @@ export const PastGameTrickCard = ({ gametrick, props }) => {
 
         useEffect(() => {
                 getAvailableTricksByGame(gametrick.game)
-        }, [])
+        }, [allGameTricks])
 
         const changeCurrentTrick = (DOMEvent) => {
                 const newTrickState = Object.assign({}, chosenGameTrick)
@@ -45,7 +45,7 @@ export const PastGameTrickCard = ({ gametrick, props }) => {
                         <button className="edit_trick"
                                 onClick={() => {
                                         setEditMode(true)
-                                        console.log(gametrick)
+                                        console.log('gametrick: ', gametrick)
                                 }}>change trick selection</button>
                         { editMode ?
                                 <fieldset>
@@ -71,7 +71,7 @@ export const PastGameTrickCard = ({ gametrick, props }) => {
                                                         }
                                                         console.log(editedGameTrick)
                                                         updateGameTrick(editedGameTrick)
-
+                                                        .then(setEditMode(false))
                                                 }}
                                                 >select new trick</button>
                                                 <button onClick={() => {

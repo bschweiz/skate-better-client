@@ -61,15 +61,14 @@ export const GameTrickProvider = (props) => {
     
     const updateGameTrick = (editedGameTrick) => {
         return fetch(`http://localhost:8000/gametricks/${editedGameTrick.id}`, {
-            method: "POST",
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Token ${localStorage.getItem("sb_token")}`
             },
             body: JSON.stringify(editedGameTrick)
         })
-            .then(response => response.json())
-            .then(getGameTricksByGame(editedGameTrick.gameId))
+            .then(getAllGameTricks)
     
     }
 
