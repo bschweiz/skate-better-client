@@ -7,7 +7,7 @@ import { GameContext } from "./GameProvider"
 
 
 
-export const PastGameControls = ({ gametrick, props, availableTricks }) => {
+export const PastGameControls = ({ gametrick, index, availableTricks }) => {
 
 
     const { getGameById, chosenGame, deleteGame } = useContext(GameContext)
@@ -46,7 +46,7 @@ export const PastGameControls = ({ gametrick, props, availableTricks }) => {
                         }}>
                         <option value='0'>Available Tricks</option>
                         {availableTricks.map(tr => (
-                            <option key={tr.id} value={tr.id}>{tr.name}</option>
+                            <option key={index+"trick-"+tr.id} value={tr.id}>{tr.name}</option>
                         ))}
                     </select>
                     <button onClick={evt => {

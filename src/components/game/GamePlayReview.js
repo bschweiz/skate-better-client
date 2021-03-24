@@ -40,12 +40,12 @@ export const GamePlayReview = (props) => {
             <div className="tricks"> <h3>Completed GameTricks List:</h3>
 
                 {
-                    theseGameTricks.map(gt => {
+                    theseGameTricks.map((gt, index) => {
                         return (
                             <>
-                                <PastGameTrickCard key={"gametrick-"+gt.id} gametrick={gt} props={props} />
-                                <PastGameControls key={"gametrick-controls-"+gt.id} gametrick={gt} props={props} 
-                                                    availableTricks={availableTricks}/>
+                                <PastGameTrickCard key={`gametrick-${gt.id}`} gametrick={gt} props={props} />
+                                <PastGameControls key={`gametrick-control-${gt.id}`} gametrick={gt} props={props} 
+                                                    availableTricks={availableTricks} index={index}/>
                                 
                             </>
                         )
