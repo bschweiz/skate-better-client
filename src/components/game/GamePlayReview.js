@@ -10,6 +10,8 @@ export const GamePlayReview = (props) => {
     const { getAvailableTricksByGame, availableTricks } = useContext(TrickContext)
     const { getGameById, chosenGame, deleteGame } = useContext(GameContext)
     const { getGameTricksByGame, gameTricksByGame, allGameTricks } = useContext(GameTrickContext)
+    
+    const [theseGameTricks, setTheseGameTricks] = useState([])
 
     useEffect(() => {
         console.log(props)
@@ -21,23 +23,28 @@ export const GamePlayReview = (props) => {
     useEffect(() => {
         getAvailableTricksByGame(props.match.params.gameId)
     }, [allGameTricks])
+    
+    useEffect(() => {
+        setTheseGameTricks(gameTricksByGame)
+    }, [gameTricksByGame])
+
 
     return (
         <>
             <h1>REVIEW YOUR GAME!</h1>
             {/* {<UserScore key={gt.id} gametrick={gt} props={props}></UserScore>}
             {<OpponentScore key={gt.id} gametrick={gt} props={props}></OpponentScore>} */}
-            <p>YOU (): {chosenGame.user_score}     THEM (): {chosenGame.opponent_score}</p>
+            <p>YOU: {chosenGame.user_score}     THEM: {chosenGame.opponent_score}</p>
 
             <h2>Tricks of the Game:</h2>
             <div className="tricks"> <h3>Completed GameTricks List:</h3>
 
                 {
-                    gameTricksByGame.map(gt => {
+                    theseGameTricks.map(gt => {
                         return (
                             <>
-                                <PastGameTrickCard key={gt.id} gametrick={gt} props={props} />
-                                <PastGameControls key={gt.id} gametrick={gt} props={props} 
+                                <PastGameTrickCard key={"gametrick-"+gt.id} gametrick={gt} props={props} />
+                                <PastGameControls key={"gametrick-controls-"+gt.id} gametrick={gt} props={props} 
                                                     availableTricks={availableTricks}/>
                                 
                             </>

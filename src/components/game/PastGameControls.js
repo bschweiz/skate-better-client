@@ -9,20 +9,9 @@ import { GameContext } from "./GameProvider"
 
 export const PastGameControls = ({ gametrick, props, availableTricks }) => {
 
-    // const { getAvailableTricksByGame, availableTricks } = useContext(TrickContext)
+
     const { getGameById, chosenGame, deleteGame } = useContext(GameContext)
     const { getGameTricksByGame, gameTricksByGame, updateGameTrick, allGameTricks } = useContext(GameTrickContext)
-
-    // useEffect(() => {
-    //     console.log(props)
-    //     getAvailableTricksByGame(props.location.game.id)
-    //     getGameTricksByGame(props.location.game.id)
-    //     getGameById(props.location.game.id)
-    // }, [])
-
-    // useEffect(() => {
-    //     getAvailableTricksByGame(props.location.game.id)
-    // }, [allGameTricks])
 
     const [editMode, setEditMode] = useState(false)
     
