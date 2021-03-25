@@ -1,0 +1,74 @@
+body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h3 {
+    margin: 1em;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    font-size: large;
+    margin: 2px;
+    background-color: #C4C4C4;
+    border-radius: 7px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-banner {
+    margin-top: 4em;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #C4C4C4;
+    height: 12rem;
+    border-radius: 7px;
+    width: 24rem;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2); 
+}
+
+.button-stack {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-link {
+    height: 6em;
+    width: 66%;
+    padding: 1em;
+    margin: 2em;
+}
+
+.log-out {
+    margin-top: 5em;
+    width: 33%;
+    padding: .25em;
+    margin: 1em;
+}
+
+
+

@@ -3,6 +3,7 @@
 import React, { useContext, useEffect } from 'react'
 import { useHistory } from 'react-router'
 import { HomeViewContext } from "./HomeViewProvider"
+import './HomeView.css'
 
 
 export const HomeView = (props) => {
@@ -18,28 +19,30 @@ export const HomeView = (props) => {
     return (
         <>
 
-            <main style={{
-                margin: "5rem 2rem",
-                lineHeight: "1.75rem"
-            }}>
-                <h1>Welcome Back Champ!</h1>
-                <h3>{profile.handle}</h3>
+            <main>
+                <div className="homeView-container">
+                    <div className="welcome-banner">
+                        <h2>Welcome Back Champ!</h2>
+                    </div>
 
-                <button className="nav-link"
-                    onClick={() => {
-                        history.push({ pathname: "/play" })
-                    }}>Play New Game</button>
+                    <div className="button-stack">
+                        <button className="nav-link"
+                            onClick={() => {
+                                history.push({ pathname: "/play" })
+                            }}>Play New Game</button>
 
-                <button className="nav-link"
-                    onClick={() => {
-                        history.push({ pathname: "/game/review" })
-                    }}>Review Old Games</button>
+                        <button className="nav-link"
+                            onClick={() => {
+                                history.push({ pathname: "/game/review" })
+                            }}>Review Old Games</button>
 
-                <button className="nav-link"
-                    onClick={() => {
-                        localStorage.removeItem("sb_token")
-                        history.push({ pathname: "/" })
-                    }}>Logout</button>
+                        <button className="log-out"
+                            onClick={() => {
+                                localStorage.removeItem("sb_token")
+                                history.push({ pathname: "/" })
+                            }}>Logout</button>
+                    </div>
+                </div>
             </main>
         </>
     )

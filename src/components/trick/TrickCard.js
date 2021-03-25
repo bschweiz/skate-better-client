@@ -32,26 +32,28 @@ export const TrickCard = ({ trick, gameId, props }) => {
     }, [trick, trickLandedState])
 
     return (trick ?
-        <section className="trick_info">
+        <>
+            <section className="trick_info">
 
-            <input type="checkbox" key="user-make" id={"user-", trick.id} name="userMake"
+                <input type="checkbox" key="user-make" id={"user-", trick.id} name="userMake" className="userMake"
 
-                checked={trickLandedState.userMake ? "checked" : ""}
-                onChange={evt => {
-                    changeUserMake(evt)
-                }}
+                    checked={trickLandedState.userMake ? "checked" : ""}
+                    onChange={evt => {
+                        changeUserMake(evt)
+                    }}
 
-            />
-            <label htmlFor={trick.id}>{trick.name}</label>
-            <input type="checkbox" key="opponent-make" id={"opponent-", trick.id} name="opponentMake"
+                />
+                <label htmlFor={trick.id}>{trick.name}</label>
+                <input type="checkbox" key="opponent-make" id={"opponent-", trick.id} name="opponentMake"
 
-                checked={trickLandedState.opponentMake ? "checked" : ""}
-                onChange={evt => {
-                    changeUserMake(evt)
-                }}
+                    checked={trickLandedState.opponentMake ? "checked" : ""}
+                    onChange={evt => {
+                        changeUserMake(evt)
+                    }}
 
-            />
-            <button name="reset-trick"
+                />
+            </section>
+            <button className="reset-trick" name="reset-trick"
                 onClick={evt => {
                     evt.preventDefault()
 
@@ -68,8 +70,9 @@ export const TrickCard = ({ trick, gameId, props }) => {
                         }))
                         .then(getCurrentGame)
                 }}
-                >log trick</button>
-        </section> : <></>
+            >log trick</button>
+        </>
+        : <></>
     )
 
 }

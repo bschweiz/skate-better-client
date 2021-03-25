@@ -4,6 +4,7 @@ import { GameTrickContext } from "../gametrick/GameTrickProvider"
 import { TrickContext } from "../trick/TrickProvider"
 import { TrickCard } from "../trick/TrickCard"
 import { GameTrickCard } from "../gametrick/GameTrickCard"
+import './GamePlay.css';
 
 
 export const GamePlay = (props) => {
@@ -80,7 +81,7 @@ export const GamePlay = (props) => {
                 : <></>
             }
             <section>
-                <button className="nav-link"
+                <button className="home-button"
                 onClick={() => {
                     props.history.push({ pathname: "/" })
                 }}>End Game Now</button>

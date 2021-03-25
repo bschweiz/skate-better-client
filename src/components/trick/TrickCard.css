@@ -1,0 +1,26 @@
+.trick_info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid 2px black;
+    flex-grow: 20%;
+    flex-wrap: wrap;
+    border-radius: 4px;
+    margin: .5em;
+    background-color: #C4C4C4;
+    padding: 1em;
+}
+
+label {
+    margin: 2px;
+    background-color: #C4C4C4;
+    font-size: larger;
+}
+
+button.reset-trick {
+    font-size: medium;
+}
+
+.userMake, .opponentMake {
+    margin: .5rem;
+}

@@ -1,0 +1,67 @@
+body {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h3 {
+    margin: .25em;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    margin-top: .5em;
+    margin-bottom: .5em;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    font-size: large;
+    margin: 2px;
+    background-color: #C4C4C4;
+    border-radius: 7px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div.opponent-select-fields {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-stack-opponent {
+    margin-top: 3em;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.start-skating {
+    width: 66%;
+}
+
+.home-button {
+    margin-top: 4em;
+    width: 40%;
+    padding: .25em;
+}
+
+fieldset {
+    margin: .25em;
+}
