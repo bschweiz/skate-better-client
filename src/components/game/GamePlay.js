@@ -45,12 +45,12 @@ export const GamePlay = (props) => {
             {/* {<UserScore key={gt.id} gametrick={gt} props={props}></UserScore>}
             {<OpponentScore key={gt.id} gametrick={gt} props={props}></OpponentScore>} */}
             <p>YOU (): {currentGame.user_score}     THEM (): {currentGame.opponent_score}</p>
-            <h2>Which trick? (Available Tricks)</h2>
+            <h2></h2>
             { availableTricks ?
                 <fieldset>
                     <div className="form-group">
 
-                        <select className="form-control" type="text" name="trickId" autoFocus
+                        <select className="form-control-tricks" type="text" name="trickId" autoFocus
                             onChange={changeCurrentTrick}
                         >
                             <option value='0'>Available Tricks</option>
@@ -61,30 +61,35 @@ export const GamePlay = (props) => {
                     </div>
                 </fieldset> : <div></div>}
 
-            <h2>Game in Progress:</h2>
-            <div className="tricks"> <h3>Completed GameTricks List:</h3>
-
-                {
-                    newestGameGameTricks.map(gt => {
-                        return <GameTrickCard key={gt.id} gametrick={gt} props={props} />
-                    })
-                }
-            </div>
-
-            <h3>Current Trick (in progress, mutable): </h3>
+            <h2></h2>
+            <div className="current_trick">                                     
             {  currentTrick.trickId ?
+                <>
+                
                 <TrickCard key={currentTrick.id}
                     trick={availableTricks.find(t => t.id == [currentTrick.trickId])}
                     gameId={currentGame.id}
                     props={props}
                 />
+                </>
                 : <></>
             }
+            </div>
+            <div className="completed_tricks"> 
+                {
+                    ((newestGameGameTricks)).map(gt => {
+                        return <GameTrickCard key={gt.id} gametrick={gt} props={props} />
+                    })
+                }
+            <h4>Landed Tricks:</h4>
+            </div>
+
+            
             <section>
                 <button className="home-button"
                 onClick={() => {
                     props.history.push({ pathname: "/" })
-                }}>End Game Now</button>
+                }}>Exit Game</button>
             </section>
         </>
     )

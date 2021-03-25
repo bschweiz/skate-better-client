@@ -33,7 +33,8 @@ export const TrickCard = ({ trick, gameId, props }) => {
 
     return (trick ?
         <>
-            <section className="trick_info">
+        <h4>Trick in Progress:</h4>
+            <section className="current_trick_info">
 
                 <input type="checkbox" key="user-make" id={"user-", trick.id} name="userMake" className="userMake"
 
