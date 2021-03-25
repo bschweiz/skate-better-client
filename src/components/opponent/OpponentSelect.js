@@ -142,7 +142,7 @@ export const OpponentSelect = (props) => {
                     }
                 }
                 
-                className="start-skating">
+                className="nav-link start-skating">
                 START SKATING!
             </button>
 
