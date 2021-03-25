@@ -1,11 +1,12 @@
 body {
+    text-align: center;
     align-items: center;
     display: flex;
     flex-direction: column;
 }
 
 h1, h3 {
-    margin: 1em;
+    margin: .25em;
     text-align: center;
     align-items: center;
     display: flex;
@@ -13,8 +14,8 @@ h1, h3 {
 }
 
 h2 {
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin-top: .5em;
+    margin-bottom: .5em;
     text-align: center;
     align-items: center;
     display: flex;
@@ -35,15 +36,13 @@ main {
     align-items: center;
 }
 
-.welcome-banner {
-    margin-top: 3em;
-    margin-bottom: 3em;
+div.opponent-select-fields {
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #C4C4C4;
-    height: 5em;
     border-radius: 7px;
     width: 98%;
 }
@@ -55,18 +54,27 @@ main {
     flex-direction: column;
 }
 
-.nav-link {
+.start-skating {
     width: 66%;
-    padding: 1em;
-    margin: 3em;
 }
 
-.log-out {
-    margin-top: 5em;
+.home-button {
+    margin-top: 4em;
     width: 33%;
     padding: .25em;
-    margin: 3em;
 }
 
+fieldset {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: .25em;
+    margin: 0;
+    border: 0;
+}
 
-
+* {
+    
+}

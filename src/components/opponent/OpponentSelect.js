@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import { useHistory } from 'react-router'
 import { OpponentContext } from "./OpponentProvider"
 import { GameContext } from "../game/GameProvider"
+// import './OpponentSelect.css'
 
 export const OpponentSelect = (props) => {
     const history = useHistory()
@@ -60,8 +61,13 @@ export const OpponentSelect = (props) => {
 
 
     return (
-        <form className="opponentSelect">
+        <>
+        
             <h2>Who are we playing?</h2>
+            <div className="opponent-select-fields">
+            <form>
+
+            
             <fieldset>
                 <div className="form-group">
 
@@ -107,7 +113,8 @@ export const OpponentSelect = (props) => {
                     />
                 </div>
             </fieldset>
-
+            </form>
+            <div className="button-stack">
             <button type="submit"
                 onClick={evt => {
                     // debugger
@@ -135,9 +142,17 @@ export const OpponentSelect = (props) => {
                     }
                 }
                 
-                className="btn btn-primary">
+                className="start-skating">
                 START SKATING!
             </button>
-        </form >
+
+            <button className="home-button" 
+                onClick={() => {
+                    history.push({ pathname: "/" })
+                }}>Home
+            </button>
+            </div>
+            </div>
+        </>
     )
 }
