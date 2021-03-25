@@ -10,10 +10,10 @@ export const PastGameCard = ({ game }) => {
         <div className="game__title">VS: {game.opponent.handle} at {game.location}</div>
         <div className="game__players"> on {game.date_time} </div>
         <div className="game__description">Who won? {game.won ? "YOU!" : "Not you, unfortunately."}</div>
-        <Link to={{
+        <button className="game__review__button" class="btn" to={{
                     pathname: `/game/review/${game.id}`,
                     game: game
-                }}>Review Game</Link>
+                }}>Review Game</button>
 
     </section>
 

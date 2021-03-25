@@ -42,12 +42,9 @@ div.opponent-select-fields {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background-color: #C4C4C4;
-    border-radius: 7px;
-    width: 98%; */
 }
 
-.button-stack {
+.button-stack-opponent {
     margin-top: 3em;
     justify-content: center;
     align-items: center;

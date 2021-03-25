@@ -114,7 +114,7 @@ export const OpponentSelect = (props) => {
                 </div>
             </fieldset>
             </form>
-            <div className="button-stack">
+            <div className="button-stack-opponent">
             <button type="submit"
                 onClick={evt => {
                     // debugger
