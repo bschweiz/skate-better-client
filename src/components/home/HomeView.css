@@ -1,0 +1,17 @@
+button {
+    margin: 2px;
+}
+
+.welcome-banner {
+    background-color: #C4C4C4;
+    border: 2px green;
+}
+
+.button-stack {
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}

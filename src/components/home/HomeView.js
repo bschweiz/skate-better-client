@@ -3,6 +3,7 @@
 import React, { useContext, useEffect } from 'react'
 import { useHistory } from 'react-router'
 import { HomeViewContext } from "./HomeViewProvider"
+import './HomeView.css'
 
 
 export const HomeView = (props) => {
@@ -18,13 +19,14 @@ export const HomeView = (props) => {
     return (
         <>
 
-            <main style={{
-                margin: "5rem 2rem",
-                lineHeight: "1.75rem"
-            }}>
+            <main>
+                <div className="welcome-banner">
                 <h1>Welcome Back Champ!</h1>
+                
                 <h3>{profile.handle}</h3>
+                </div>
 
+                <div className="button-stack">
                 <button className="nav-link"
                     onClick={() => {
                         history.push({ pathname: "/play" })
@@ -40,6 +42,7 @@ export const HomeView = (props) => {
                         localStorage.removeItem("sb_token")
                         history.push({ pathname: "/" })
                     }}>Logout</button>
+                </div>
             </main>
         </>
     )

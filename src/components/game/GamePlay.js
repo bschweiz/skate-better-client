@@ -4,6 +4,7 @@ import { GameTrickContext } from "../gametrick/GameTrickProvider"
 import { TrickContext } from "../trick/TrickProvider"
 import { TrickCard } from "../trick/TrickCard"
 import { GameTrickCard } from "../gametrick/GameTrickCard"
+import './GamePlay.css';
 
 
 export const GamePlay = (props) => {
