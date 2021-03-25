@@ -42,12 +42,13 @@ div.opponent-select-fields {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #C4C4C4;
+    /* background-color: #C4C4C4;
     border-radius: 7px;
-    width: 98%;
+    width: 98%; */
 }
 
 .button-stack {
+    margin-top: 3em;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -60,21 +61,10 @@ div.opponent-select-fields {
 
 .home-button {
     margin-top: 4em;
-    width: 33%;
+    width: 40%;
     padding: .25em;
 }
 
 fieldset {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    padding: .25em;
-    margin: 0;
-    border: 0;
-}
-
-* {
-    
+    margin: .25em;
 }

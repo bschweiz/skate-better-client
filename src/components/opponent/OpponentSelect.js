@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import { useHistory } from 'react-router'
 import { OpponentContext } from "./OpponentProvider"
 import { GameContext } from "../game/GameProvider"
-// import './OpponentSelect.css'
+import './OpponentSelect.css'
 
 export const OpponentSelect = (props) => {
     const history = useHistory()
