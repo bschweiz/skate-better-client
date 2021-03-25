@@ -39,8 +39,10 @@ code {
   border: #6c757d;
   border-radius: 7px; 
   color: white; 
-  font-weight: normal;
+  font-weight: bold;
   margin-top: .5rem;
+  font-size: small;
+  padding: .5rem;
   /* padding: .5em;
   margin: .5em 0 1em 0; */
   /* box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2); */

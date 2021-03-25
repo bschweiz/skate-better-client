@@ -5,10 +5,10 @@ import { PastGameCard } from "./PastGameCard"
 
 
 
-export const PastGameList = ({props}) => {
+export const PastGameList = ({ props }) => {
     const history = useHistory()
     const { allGames, getAllGames } = useContext(GameContext)
-    const [ games, setGames ] = useState([])
+    const [games, setGames] = useState([])
 
     useEffect(() => {
         getAllGames()
@@ -22,12 +22,17 @@ export const PastGameList = ({props}) => {
 
     return (
         <>
-            <div className="past_game_list">Welcome Back Champ
+            <div className="past_game_list">
+                <h3>
+                        Refresh Your Memory!
+                </h3>
+            <div className="past_games_scroll_container">
                 {
                     games.map(game => <PastGameCard key={game.id} game={game} props={props} />)
                 }
             </div>
 
+            </div>
             <button className="nav-link"
                 onClick={() => {
                     history.push({ pathname: "/" })
