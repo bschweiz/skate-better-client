@@ -1,7 +1,5 @@
 
 import React, { useContext, useState } from "react"
-import { Link } from "react-router-dom"
-import { GameTrickContext } from "./GameTrickProvider"
 import { TrickContext } from "../trick/TrickProvider"
 import "./GameTrickCard.css"
 
