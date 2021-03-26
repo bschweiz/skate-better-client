@@ -24,3 +24,14 @@ button.reset-trick {
 .userMake, .opponentMake {
     margin: .5rem;
 }
+
+.current_trick_info {
+    flex-grow: 20%;
+    flex-wrap: wrap;
+    border-radius: 4px;
+    margin: .5em;
+    background-color: #C4C4C4;
+    padding: .5em;
+    justify-content: center;
+    align-items: center;
+}

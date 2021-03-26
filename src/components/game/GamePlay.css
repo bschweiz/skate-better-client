@@ -1,3 +1,20 @@
 .form-group {
     margin: 20;
 }
+
+.form-control-tricks {
+    font-size: large;
+    width: fit-content;
+}
+
+.completed_tricks {
+    flex-direction: column-reverse;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.current_trick {
+    background-color: antiquewhite;
+}
