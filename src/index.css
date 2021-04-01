@@ -37,6 +37,11 @@ code {
     monospace;
 }
 
+label {
+  margin: 2px;
+  background-color: #C4C4C4;
+}
+
 .btn {
   background-color: #6c757d; 
   border: #6c757d;
