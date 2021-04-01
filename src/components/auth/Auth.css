@@ -68,3 +68,15 @@ fieldset {
     min-width: 15rem;
     min-height: 5rem;
 } */
+
+label {
+    margin: 2px;
+    border-radius: 2px;
+    padding: .25rem;
+    background-color: #C4C4C4;
+    vertical-align: top;
+  }
+
+input {
+    font-size: large;
+}
