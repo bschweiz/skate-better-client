@@ -52,8 +52,6 @@ export const GamePlay = (props) => {
             {
                 <ScoreCard key={"opponent-score" + currentGame.id} score={currentGame.opponent_score} props={props}></ScoreCard>
                 }
-                
-            {/* <p>YOU (): {currentGame.user_score}     THEM (): {currentGame.opponent_score}</p> */}
             <h2></h2>
             { availableTricks ?
                 <fieldset>
