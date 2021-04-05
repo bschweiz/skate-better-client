@@ -42,8 +42,7 @@ export const GamePlay = (props) => {
     return (
         <>
             <h1>LIVE SCORE!</h1>
-            {/* {<UserScore key={gt.id} gametrick={gt} props={props}></UserScore>}
-            {<OpponentScore key={gt.id} gametrick={gt} props={props}></OpponentScore>} */}
+            {<ScoreCard key={gt.id} gametrick={gt} props={props}></OpponentScore>} */}
             <p>YOU (): {currentGame.user_score}     THEM (): {currentGame.opponent_score}</p>
             <h2></h2>
             { availableTricks ?
