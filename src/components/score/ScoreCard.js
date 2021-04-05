@@ -7,7 +7,7 @@ import React, { useContext, useState } from "react"
 export const ScoreCard = ({ score, props }) => {
         console.log("score from ScoreCard", score)
         let SKATEState = "__.__.__.__.__."
-        debugger
+        // debugger
         if (score == 0) {return SKATEState}
         else if (score == 1) {SKATEState = "S_.__.__.__.__."}
         else if (score == 2) {SKATEState = "S_.K_.__.__.__."}
