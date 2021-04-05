@@ -2,8 +2,6 @@
 import React, { useContext, useState } from "react"
 
 
-
-
 export const ScoreCard = ({ score, props }) => {
         console.log("score from ScoreCard", score)
         let SKATEState = "__.__.__.__.__."
@@ -33,6 +31,7 @@ export const ScoreCard = ({ score, props }) => {
                 //         />
 
                 // </section>
+
         )
 
 }
