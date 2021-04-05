@@ -5,7 +5,7 @@ import { TrickContext } from "../trick/TrickProvider"
 
 
 
-export const GameTrickCard = ({ currentGame, props }) => {
+export const ScoreCard = ({ gametrick, props }) => {
         
 
         return (

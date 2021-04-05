@@ -3,6 +3,7 @@ import { GameContext } from "./GameProvider"
 import { GameTrickContext } from "../gametrick/GameTrickProvider"
 import { TrickContext } from "../trick/TrickProvider"
 import { TrickCard } from "../trick/TrickCard"
+import { ScoreCard } from "../score/ScoreCard"
 import { GameTrickCard } from "../gametrick/GameTrickCard"
 import './GamePlay.css';
 
@@ -42,8 +43,11 @@ export const GamePlay = (props) => {
     return (
         <>
             <h1>LIVE SCORE!</h1>
-            {/* {<UserScore key={gt.id} gametrick={gt} props={props}></UserScore>}
-            {<OpponentScore key={gt.id} gametrick={gt} props={props}></OpponentScore>} */}
+            <label>You</label>
+            {
+                <ScoreCard key={"user-score" + currentGame.id} score={currentGame.user_score} props={props}></ScoreCard>
+                }
+                
             <p>YOU (): {currentGame.user_score}     THEM (): {currentGame.opponent_score}</p>
             <h2></h2>
             { availableTricks ?
