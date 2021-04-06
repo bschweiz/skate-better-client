@@ -14,7 +14,7 @@ export const ScoreCard = ({ score, props }) => {
         else {SKATEState = "S_.K_.A_.T_.E_."}
 
         return (
-                <div className="score-card">
+                <div className="score-card-score">
                         {
                                 <h2>{SKATEState}</h2>
                                 

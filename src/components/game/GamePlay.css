@@ -22,3 +22,7 @@
 .light-text-label {
     color:aliceblue;
 }
+
+.score-board-pannel {
+    border: 3px solid grey;
+}
