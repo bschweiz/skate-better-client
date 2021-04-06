@@ -42,7 +42,7 @@ export const GamePlay = (props) => {
 
     return (
         <>
-            <h1>LIVE SCORE!</h1>
+            <h1>SCOREBOARD</h1>
             <label>You</label>
             {
                 <ScoreCard key={"user-score" + currentGame.id} score={currentGame.user_score} props={props}></ScoreCard>
