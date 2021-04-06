@@ -46,12 +46,12 @@ export const GamePlay = (props) => {
             {
                 <ScoreCard key={"user-score" + currentGame.id} score={currentGame.user_score} props={props}></ScoreCard>
                 }
-            <div>You</div>
+            <div className="light-text-label">You</div>
                 
             {
                 <ScoreCard key={"opponent-score" + currentGame.id} score={currentGame.opponent_score} props={props}></ScoreCard>
                 }
-            <div>Opponent</div>
+            <div className="light-text-label">Opponent</div>
             <h2></h2>
             { availableTricks ?
                 <fieldset>
