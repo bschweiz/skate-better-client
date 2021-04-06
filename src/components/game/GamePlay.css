@@ -18,3 +18,14 @@
 .current_trick {
     background-color: antiquewhite;
 }
+
+.light-text-label {
+    color:aliceblue;
+    background-color: grey;
+}
+
+.score-board-pannel {
+    border: 3px solid grey;
+    display: flex;
+    flex-direction: row;
+}

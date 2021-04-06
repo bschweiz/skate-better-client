@@ -42,16 +42,22 @@ export const GamePlay = (props) => {
 
     return (
         <>
-            <h1>LIVE SCORE!</h1>
-            <label>You</label>
+
+            <h1>SCOREBOARD</h1>
+            <div className="score-board-pannel">
+            <div className="score-card">
             {
                 <ScoreCard key={"user-score" + currentGame.id} score={currentGame.user_score} props={props}></ScoreCard>
                 }
-                
-            <label>Opponent</label>
+            <div className="light-text-label">You</div>
+            </div>  
+            <div className="score-card">
             {
                 <ScoreCard key={"opponent-score" + currentGame.id} score={currentGame.opponent_score} props={props}></ScoreCard>
                 }
+            <div className="light-text-label">Opponent</div>
+            </div> 
+            </div>
             <h2></h2>
             { availableTricks ?
                 <fieldset>

@@ -1,6 +1,6 @@
 
 import React, { useContext, useState } from "react"
-
+import './ScoreCard.css'
 
 export const ScoreCard = ({ score, props }) => {
         console.log("score from ScoreCard", score)
@@ -14,12 +14,12 @@ export const ScoreCard = ({ score, props }) => {
         else {SKATEState = "S_.K_.A_.T_.E_."}
 
         return (
-                <>
+                <div className="score-card-score">
                         {
                                 <h2>{SKATEState}</h2>
                                 
                                 }
-                </>
+                </div>
                 // <section className="trick_info">
 
                 //         <input type="checkbox" key={"skater-make" + gametrick.id} name="checkbox" checked=
