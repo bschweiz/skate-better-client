@@ -45,16 +45,18 @@ export const GamePlay = (props) => {
 
             <h1>SCOREBOARD</h1>
             <div className="score-board-pannel">
-
+            <div className="score-card">
             {
                 <ScoreCard key={"user-score" + currentGame.id} score={currentGame.user_score} props={props}></ScoreCard>
                 }
             <div className="light-text-label">You</div>
-                
+            </div>  
+            <div className="score-card">
             {
                 <ScoreCard key={"opponent-score" + currentGame.id} score={currentGame.opponent_score} props={props}></ScoreCard>
                 }
             <div className="light-text-label">Opponent</div>
+            </div> 
             </div>
             <h2></h2>
             { availableTricks ?
