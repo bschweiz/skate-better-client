@@ -62,20 +62,7 @@ export const GamePlay = (props) => {
             { availableTricks ?
                 <fieldset>
                     <div className="form-group">
-
-                        <select className="form-control-tricks" type="text" name="trickId" autoFocus
-                            onChange={changeCurrentTrick}
-                        >
-                            <option value='0'>Available Tricks</option>
-                            {availableTricks.map(tr => (
-                                <option key={tr.id} value={tr.id}>{tr.name}</option>
-                            ))}
-                        </select>
-                    </div>
-                </fieldset> : <div></div>}
-
-            <h2></h2>
-            <div className="current_trick">                                     
+                    <div className="current_trick">                                     
             {  currentTrick.trickId ?
                 <>
                 
@@ -88,6 +75,19 @@ export const GamePlay = (props) => {
                 : <></>
             }
             </div>
+                        <select className="form-control-tricks" type="text" name="trickId" autoFocus
+                            onChange={changeCurrentTrick}
+                        >
+                            <option value='0'>Available Tricks</option>
+                            {availableTricks.map(tr => (
+                                <option key={tr.id} value={tr.id}>{tr.name}</option>
+                            ))}
+                        </select>
+                    </div>
+                </fieldset> : <div></div>}
+
+            <h2></h2>
+            
             <div className="completed_tricks"> 
                 {
                     ((newestGameGameTricks)).map(gt => {
